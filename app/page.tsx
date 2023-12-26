@@ -1,10 +1,10 @@
 import Image from "next/image";
-import CallInfo from "./components/CallInfo";
-import Notice from "./components/Notice";
-import VisitingCare from "./components/services/VisitingCare";
-import VisitinbBathe from "./components/services/VisitinbBathe";
-import Ranking from "./components/services/Ranking";
-import CareTool from "./components/services/CareTool";
+import CallInfo from "../components/CallInfo";
+import Notice from "../components/Notice";
+import VisitingCare from "../components/services/VisitingCare";
+import VisitinbBathe from "../components/services/VisitinbBathe";
+import Ranking from "../components/services/Ranking";
+import CareTool from "../components/services/CareTool";
 
 export default function Home() {
   return (
