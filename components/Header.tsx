@@ -33,7 +33,7 @@ const Header = async () => {
                 </a>
               </div>
               <div className="w-full h-12 flex items-center justify-center hover:bg-sky-900 hover:text-slate-50">
-                <a href="/map" className="no-underline block text-base">
+                <a href="/directions" className="no-underline block text-base">
                   오시는 길
                 </a>
               </div>

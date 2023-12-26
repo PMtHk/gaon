@@ -8,7 +8,7 @@ import CareTool from "../components/services/CareTool";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen pt-16 lg:pt-20">
+    <div className="flex flex-col pt-16 lg:pt-20">
       <div className="min-h-screen flex flex-col">
         <div className="w-full h-[70vh] md:h-[75vh] lg:h-[80vh] bg-home-intro bg-[65%_center] md:bg-[60%_center] lg:bg-[55%_center] bg-cover bg-no-repeat transition-all duration-500">
           <div className="opacity-0 lg:opacity-100 container flex flex-col p-1 px-2 justify-start items-start mt-16">
@@ -63,6 +63,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
