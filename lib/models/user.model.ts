@@ -27,6 +27,11 @@ userSchema.pre("save", function (next) {
   }
 });
 
+// add comeparePassword method
+userSchema.methods.comparePassword = async function (plainPassword: string) {
+  return await bcrypt.compare(plainPassword, this.password);
+};
+
 let User: any = null;
 if (mongoose.models.User !== undefined) {
   User = mongoose.models.User;

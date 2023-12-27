@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import Token from "../models/token.model";
 import User from "../models/user.model";
 import { connectToDB, disconnectFromDB } from "../mongoose/mongoose";
+import { generateAccess, generateRefresh } from "../jwt/jwt";
 
 export const createAdmin = async (username: string, password: string) => {
   let result: any = null;
@@ -55,20 +56,26 @@ export const login = async (username: string, password: string) => {
         ok: false,
         message: "해당 관리자 아이디가 존재하지 않습니다.",
       };
+
+      return result;
     }
 
     const isMatch = await targetAdmin.comparePassword(password);
+
+    console.log(isMatch);
 
     if (!isMatch) {
       result = {
         ok: false,
         message: "패스워드가 일치하지 않습니다.",
       };
+
+      return result;
     }
 
     // generate access, refresh token
-    const accessToken = await targetAdmin.generateAccessToken();
-    const refreshToken = await targetAdmin.generateRefreshToken();
+    const accessToken = generateAccess(targetAdmin._id, targetAdmin.username);
+    const refreshToken = generateRefresh(targetAdmin._id);
 
     const existRefreshToken = await Token.findOne({ user_id: targetAdmin._id });
 
@@ -96,9 +103,11 @@ export const login = async (username: string, password: string) => {
   } catch (error: any) {
     result = {
       ok: false,
-      message: "로그인에 실패했습니다.",
+      message: "로그인에 실패했습니다. 잠시 후 다시 시도해주세요.",
       error: error.message,
     };
+
+    console.log(error);
   } finally {
     await disconnectFromDB();
   }

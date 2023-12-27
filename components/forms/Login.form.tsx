@@ -13,6 +13,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import {
   AlertDialog,
@@ -25,6 +26,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { login } from "@/lib/actions/user.actions";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -50,13 +52,70 @@ const LoginForm = () => {
     },
   });
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && alert.isOpen) {
+      setAlert({
+        isOpen: false,
+        title: "",
+        message: "",
+        onClick: () => {},
+      })
+
+      form.reset();
+
+      return;
+    }
+  };
+
   const onSubmit = async (data: z.infer<typeof LoginFormValidation>) => {
-    console.log(form.getValues("username"));
-    console.log(form.getValues("password"));
+    setIsLoading(true);
+
+    try {
+      const res = await login(
+        form.getValues("username"),
+        form.getValues("password")
+      );
+
+      if (!res.ok) {
+        setIsLoading(false);
+        setAlert({
+          isOpen: true,
+          title: "로그인 실패",
+          message: res.message,
+          onClick: () => {
+            setAlert({
+              isOpen: false,
+              title: "",
+              message: "",
+              onClick: () => {},
+            });
+          },
+        });
+
+        return;
+      }
+
+      router.push("/admin");
+    } catch (error: any) {
+      setIsLoading(false);
+      setAlert({
+        isOpen: true,
+        title: "로그인 실패",
+        message: error.message,
+        onClick: () => {
+          setAlert({
+            isOpen: false,
+            title: "",
+            message: "",
+            onClick: () => {},
+          });
+        },
+      });
+    }
   };
 
   return (
-    <>
+    <div  onKeyDown={handleKeyDown}>
       <Form {...form}>
         <form
           className="space-y-4 md:space-y-6"
@@ -77,6 +136,7 @@ const LoginForm = () => {
                       required
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -97,15 +157,13 @@ const LoginForm = () => {
                       required
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
           </div>
 
-          <Button
-            type="submit"
-            className="w-full"
-          >
+          <Button type="submit" className="w-full">
             관리자 로그인하기
           </Button>
         </form>
@@ -122,7 +180,7 @@ const LoginForm = () => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </>
+    </div>
   );
 };
 
