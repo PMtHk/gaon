@@ -20,7 +20,7 @@ export const connectToDB = async () => {
     });
     isConnected = true;
   } catch (error: any) {
-    console.log("=> error connecting to database: ", error);
+    console.log("[DB] mongoose connect error: ", error);
   }
 };
 
@@ -31,6 +31,6 @@ export const disconnectFromDB = async () => {
     await mongoose.connection.close();
     isConnected = false;
   } catch (error: any) {
-    console.log("=> error disconnecting from database: ", error);
+    console.log("[DB] mongoose disconnect error: ", error);
   }
 };
