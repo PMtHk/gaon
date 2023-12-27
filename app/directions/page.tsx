@@ -16,7 +16,7 @@ const Page = () => {
         <KakaoMap />
       </div>
 
-      <div className="w-full container grid grid-cols-3 mx-2 py-8">
+      <div className="w-full container grid grid-cols-3 mx-2 py-8 pb-24">
         <div className="flex flex-col items-center justify-start">
           <span className="text-3xl font-semibold text-sky-900 mb-6">주소</span>
           <span className="text-xl text-gray-500">
@@ -27,18 +27,14 @@ const Page = () => {
           </span>
         </div>
 
-        <div className="flex flex-col items-center justify-start">
+        <div className="flex flex-col items-center justify-start border-l-2 border-sky-900">
           <span className="text-3xl font-semibold text-sky-900 mb-6">전화</span>
-          <span className="text-xl text-gray-500">
-            032-566-6645
-          </span>
+          <span className="text-xl text-gray-500">032-566-6645</span>
         </div>
 
-        <div className="flex flex-col items-center justify-start">
+        <div className="flex flex-col items-center justify-start border-l-2 border-sky-900">
           <span className="text-3xl font-semibold text-sky-900 mb-6">팩스</span>
-          <span className="text-xl text-gray-500">
-            0508-959-5288
-          </span>
+          <span className="text-xl text-gray-500">0508-959-5288</span>
         </div>
       </div>
     </div>
