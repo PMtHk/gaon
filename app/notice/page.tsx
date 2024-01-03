@@ -1,4 +1,9 @@
-const Page = () => {
+import { getNoticeList } from "@/lib/actions/notice.actions";
+
+const Page = async () => {
+
+  const res = await getNoticeList();
+
   return (
     <div className="w-full flex flex-col items-center">
       <div className="py-20">

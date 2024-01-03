@@ -37,3 +37,37 @@ export const createNotice = async (title: string, content: string) => {
 
   return result;
 };
+
+export const getNoticeList = async () => {
+  let result: any = null;
+
+  try {
+    await connectToDB();
+
+    const noticeList = await Notice.paginate(
+      {},
+      {
+        page: 1,
+        limit: 10,
+        sort: { createdAt: -1 },
+        populate: {
+          path: "author",
+          select: "username",
+        },
+      }
+    )
+
+    result = {
+      ok: true,
+      noticeList,
+    };
+  } catch (error: any) {
+    result = {
+      ok: false,
+      message: "공지사항 조회에 실패했습니다.",
+      error: error.message,
+    };
+  }
+
+  return result;
+}
