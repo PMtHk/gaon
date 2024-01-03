@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import Token from "../models/token.model";
 import User from "../models/user.model";
 import { connectToDB, disconnectFromDB } from "../mongoose/mongoose";
-import { generateAccess, generateRefresh } from "../jwt/jwt";
+import { generateAccess, generateRefresh, verifyAccess } from "../jwt/jwt";
 
 export const createAdmin = async (username: string, password: string) => {
   let result: any = null;
@@ -87,6 +87,15 @@ export const login = async (username: string, password: string) => {
     });
 
     cookies().set({
+      name: "gaon_access_token",
+      value: accessToken,
+      path: "/",
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 14),
+      httpOnly: true,
+      sameSite: "strict",
+    });
+
+    cookies().set({
       name: "gaon_refresh_token",
       value: accessToken,
       path: "/",
@@ -113,4 +122,26 @@ export const login = async (username: string, password: string) => {
   }
 
   return result;
+};
+
+export const getUserId = () => {
+  try {
+    // get access token from cookie
+    const cookieStore = cookies();
+    const access_body:
+      | {
+          name: string;
+          value: string;
+        }
+      | undefined = cookieStore.get("gaon_access_token");
+
+    if (!access_body) throw new Error(`다시 로그인해주세요.`);
+    const access_token = access_body.value;
+
+    // get user_id from access token subject
+    const { _id: user_id } = verifyAccess(access_token);
+    return user_id;
+  } catch (error: any) {
+    throw new Error(`로그인 정보 없음. ${error.message}`);
+  }
 };
