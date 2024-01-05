@@ -5,6 +5,7 @@ import { useRef } from "react";
 
 import ReactQuill, { ReactQuillProps } from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { Skeleton } from "./ui/skeleton";
 
 const modules = {
   toolbar: [
@@ -31,7 +32,7 @@ const QuillNoSSRWrapper = dynamic(
     );
     return Quill;
   },
-  { loading: () => <div>...loading</div>, ssr: false }
+  { loading: () => <Skeleton className="w-full h-[600px] rounded-2xl flex justify-center items-center" >텍스트 에디터를 불러오는 중입니다.</Skeleton>, ssr: false }
 );
 
 interface TextEditorProps extends ReactQuillProps {}

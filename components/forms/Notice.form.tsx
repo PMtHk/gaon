@@ -112,13 +112,14 @@ const NoticeForm = () => {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-lg">제목</FormLabel>
+                  <FormLabel className="text-xl pl-0.5">제목</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       type="text"
                       placeholder="제목을 입력해 주세요."
                       required
+                      className="text-base"
                     />
                   </FormControl>
                   <FormMessage />
@@ -133,11 +134,11 @@ const NoticeForm = () => {
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-lg">내용</FormLabel>
+                  <FormLabel className="text-xl pl-0.5">내용</FormLabel>
                   <FormControl>
                     <TextEditor
                       {...field}
-                      className="w-full max-w-[1000px] h-[600px] text-center pb-10"
+                      className="w-full max-w-[1000px] h-[50vh] text-center pb-10"
                     />
                   </FormControl>
                   <FormMessage />

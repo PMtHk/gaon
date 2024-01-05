@@ -21,6 +21,7 @@
     "lucide-react": "^0.302.0",
     "mongoose": "^8.0.3",
     "mongoose-paginate-v2": "^1.7.4",
+    "mongoose-sequence": "^6.0.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.5",
+    "@types/mongoose-sequence": "^3.0.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

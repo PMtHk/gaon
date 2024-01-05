@@ -38,28 +38,44 @@ export const createNotice = async (title: string, content: string) => {
   return result;
 };
 
-export const getNoticeList = async () => {
+export const getNoticeList = async (search: string, page: number = 1) => {
   let result: any = null;
+  const limit = 10;
 
   try {
     await connectToDB();
 
-    const noticeList = await Notice.paginate(
-      {},
-      {
-        page: 1,
-        limit: 10,
-        sort: { createdAt: -1 },
-        populate: {
-          path: "author",
-          select: "username",
-        },
-      }
-    )
+    const regExp = new RegExp(search, "i");
+
+    const noticeList = await Notice.find({
+      title: regExp,
+    }).sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .populate("author", "username")
+      .lean();
+
+    noticeList.forEach((notice: any) => {
+      notice._id = notice._id.toString();
+      notice.author = notice.author.username;
+      notice.createdAt = notice.createdAt
+        .toLocaleDateString("ko-KR", {
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+        })
+        .replace(".", "년")
+        .replace(".", "월")
+        .replace(".", "일");
+    });
+
+    const totalCount = await Notice.countDocuments();
 
     result = {
       ok: true,
       noticeList,
+      currentPage: page,
+      totalPages: Math.ceil(totalCount / limit),
     };
   } catch (error: any) {
     result = {
@@ -70,4 +86,4 @@ export const getNoticeList = async () => {
   }
 
   return result;
-}
+};
