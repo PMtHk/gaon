@@ -27,9 +27,12 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { createNotice } from "@/lib/actions/notice.actions";
+import useUserStore from "@/store/useUserStore";
 
 const NoticeForm = () => {
   const router = useRouter();
+
+  const isAdmin = useUserStore((state) => state.isAdmin);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [alert, setAlert] = useState<{
@@ -56,6 +59,26 @@ const NoticeForm = () => {
     setIsLoading(true);
 
     try {
+      if (!isAdmin) {
+        setIsLoading(false);
+        setAlert({
+          isOpen: true,
+          title: "공지사항 작성 실패",
+          message: "관리자만 작성할 수 있습니다.",
+          onClick: () => {
+            setAlert({
+              isOpen: false,
+              title: "",
+              message: "",
+              onClick: () => {},
+            });
+            router.push("/notice");
+          },
+        });
+
+        return;
+      }
+
       const res = await createNotice(
         form.getValues("title"),
         form.getValues("content")
@@ -147,7 +170,7 @@ const NoticeForm = () => {
             />
           </div>
 
-          <Button type="submit" className="w-full text-base">
+          <Button type="submit" className="w-full text-base" disabled={isLoading}>
             작성하기
           </Button>
         </form>

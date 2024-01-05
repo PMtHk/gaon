@@ -13,7 +13,6 @@ const Search = ({ search = "" }: SearchProps) => {
   const [input, setInput] = useState(search);
 
   const onClick = () => {
-    console.log(input);
     router.push(`/notice?search=${input}`);
   };
 

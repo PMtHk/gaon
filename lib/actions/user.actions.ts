@@ -62,8 +62,6 @@ export const login = async (username: string, password: string) => {
 
     const isMatch = await targetAdmin.comparePassword(password);
 
-    console.log(isMatch);
-
     if (!isMatch) {
       result = {
         ok: false,

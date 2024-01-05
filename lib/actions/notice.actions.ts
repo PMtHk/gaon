@@ -96,6 +96,14 @@ export const getNotice = async (_id: string) => {
 
     const notice = await Notice.findById(_id).populate("author", "username").lean();
     notice.author = notice.author.username;
+    notice.createdAt = notice.createdAt.toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+
+    }).replace(".", "년").replace(".", "월").replace(".", "일");
 
     result = {
       ok: true,
@@ -105,6 +113,101 @@ export const getNotice = async (_id: string) => {
     result = {
       ok: false,
       message: "공지사항 조회에 실패했습니다.",
+      error: error.message,
+    };
+  }
+
+  return result;
+}
+
+export const getPrevNotice = async (_id: string) => {
+  let result: any = null;
+
+  try {
+    await connectToDB();
+
+    const prevNotice = await Notice.find({
+      _id: { $lt: _id },
+    }).sort({ _id: -1 }).limit(1).lean();
+
+    prevNotice[0].author = prevNotice[0].author.username;
+    prevNotice[0].createdAt = prevNotice[0].createdAt.toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+
+    }).replace(".", "년").replace(".", "월").replace(".", "일");
+
+    result = {
+      ok: true,
+      prevNotice: prevNotice[0],
+    };
+  } catch (error: any) {
+    result = {
+      ok: false,
+      message: "이전 공지사항 조회에 실패했습니다.",
+      error: error.message,
+    };
+  }
+
+  return result;
+}
+
+export const getNextNotice = async (_id: string) => {
+  let result: any = null;
+
+  try {
+    await connectToDB();
+
+    const nextNotice = await Notice.find({
+      _id: { $gt: _id },
+    }).sort({ _id: 1 }).limit(1).lean();
+
+    nextNotice[0].author = nextNotice[0].author.username;
+    nextNotice[0].createdAt = nextNotice[0].createdAt.toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+
+    }).replace(".", "년").replace(".", "월").replace(".", "일");
+
+    result = {
+      ok: true,
+      nextNotice: nextNotice[0],
+    };
+  } catch (error: any) {
+    result = {
+      ok: false,
+      message: "다음 공지사항 조회에 실패했습니다.",
+      error: error.message,
+    };
+  }
+
+  return result;
+}
+
+export const deleteNotice = async (_id: string) => {
+  let result: any = null;
+
+  try {
+    await connectToDB();
+
+    await Notice.findByIdAndDelete(_id);
+
+    result = {
+      ok: true,
+      message: "공지사항이 삭제되었습니다.",
+    };
+
+    revalidatePath("/notice");
+  } catch (error: any) {
+    result = {
+      ok: false,
+      message: "공지사항 삭제에 실패했습니다.",
       error: error.message,
     };
   }

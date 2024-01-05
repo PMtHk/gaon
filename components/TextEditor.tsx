@@ -13,7 +13,8 @@ const modules = {
     ["bold", "italic", "underline"],
     [{ list: "ordered" }, { list: "bullet" }],
     [{ indent: "-1" }, { indent: "+1" }],
-    ["link", "image"],
+    ["link"],
+    // ["link", "image"],
   ],
   clipboard: {
     matchVisual: false, // toggle to add extra line breaks when pasting HTML:
@@ -32,7 +33,14 @@ const QuillNoSSRWrapper = dynamic(
     );
     return Quill;
   },
-  { loading: () => <Skeleton className="w-full h-[600px] rounded-2xl flex justify-center items-center" >텍스트 에디터를 불러오는 중입니다.</Skeleton>, ssr: false }
+  {
+    loading: () => (
+      <Skeleton className="w-full h-[600px] rounded-2xl flex justify-center items-center">
+        텍스트 에디터를 불러오는 중입니다.
+      </Skeleton>
+    ),
+    ssr: false,
+  }
 );
 
 interface TextEditorProps extends ReactQuillProps {}
