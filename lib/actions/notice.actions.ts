@@ -87,3 +87,27 @@ export const getNoticeList = async (search: string, page: number = 1) => {
 
   return result;
 };
+
+export const getNotice = async (_id: string) => {
+  let result: any = null;
+
+  try {
+    await connectToDB();
+
+    const notice = await Notice.findById(_id).populate("author", "username").lean();
+    notice.author = notice.author.username;
+
+    result = {
+      ok: true,
+      notice,
+    }
+  } catch (error: any) {
+    result = {
+      ok: false,
+      message: "공지사항 조회에 실패했습니다.",
+      error: error.message,
+    };
+  }
+
+  return result;
+}

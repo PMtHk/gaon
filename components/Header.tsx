@@ -1,3 +1,4 @@
+import RightSideMenu from "./RightSideMenu";
 import { menus } from "./menus";
 
 const Header = async () => {
@@ -71,6 +72,7 @@ const Header = async () => {
             </a>
           </div>
         </nav>
+        <RightSideMenu />
       </div>
     </header>
   );
