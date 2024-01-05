@@ -17,11 +17,11 @@ const Footer = async () => {
             <span>팩스 : 0508-959-5288</span>
           </div>
           <span>도로명주소 : 인천광역시 서구 승학로 403, 203호</span>
-          <div className="absolute right-2 top-0">
+          <div className="mt-4 sm:mt-2 md:absolute md:mt-0 right-2 md:top-0">
             <ToLoginButton />
           </div>
         </div>
-        <div className="absolute bottom-2 left-0">
+        <div className="absolute bottom-2">
           <span className="text-slate-200 text-sm">
             © 2023. 가온방문요양센터 all rights reserved.
           </span>
