@@ -25,7 +25,7 @@ export const createNotice = async (title: string, content: string) => {
       message: "새 공지사항이 생성되었습니다.",
     };
 
-    revalidatePath("/notice");
+    revalidatePath("/notices");
   } catch (error: any) {
     result = {
       ok: false,

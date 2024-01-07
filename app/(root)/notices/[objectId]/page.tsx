@@ -46,7 +46,7 @@ const NoticeViewPage = async ({
         <a
           href={
             nextNotice.nextNotice
-              ? `/notice/${nextNotice.nextNotice?._id}`
+              ? `/notices/${nextNotice.nextNotice?._id}`
               : "#"
           }
           className="mb-0.5 w-full min-h-12 flex items-center px-4 gap-2 border-2 rounded-md border-slate-200 hover:bg-slate-100"
@@ -66,7 +66,7 @@ const NoticeViewPage = async ({
         <a
           href={
             prevNotice.prevNotice
-              ? `/notice/${prevNotice.prevNotice?._id}`
+              ? `/notices/${prevNotice.prevNotice?._id}`
               : "#"
           }
           className="w-full min-h-12 flex items-center px-4 gap-2 border-2 rounded-md border-slate-200 hover:bg-slate-100"
@@ -87,7 +87,7 @@ const NoticeViewPage = async ({
       <div className="flex justify-end items-center mt-1 mb-10 gap-1">
         <NoticeActions noticeId={objectId} />
         <a
-          href="/notice"
+          href="/notices"
           className="h-12  rounded-lg text-sky-900 border border-sky-900  flex items-center justify-center px-2 hover:bg-sky-100"
         >
           목록으로

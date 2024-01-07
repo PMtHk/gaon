@@ -21,7 +21,7 @@ const NoticeActions = ({ noticeId }: { noticeId: string }) => {
   const onClick = async () => {
     const response = await deleteNotice(noticeId);
     if (response) {
-      router.push("/notice");
+      router.push("/notices");
     }
   };
 

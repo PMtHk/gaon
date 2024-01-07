@@ -26,7 +26,7 @@ const NoticePagination = ({
       links.push(
         <PaginationLink
           key={i}
-          href={i !== currentPage ? `/notice?page=${i}` : "#"}
+          href={i !== currentPage ? `/notices?page=${i}` : "#"}
           className="text-sm md:text-lg"
           isActive={i === currentPage}
         >
@@ -40,7 +40,7 @@ const NoticePagination = ({
         links.push(
           <PaginationLink
             key={i}
-            href={i !== currentPage ? `/notice?page=${i}` : "#"}
+            href={i !== currentPage ? `/notices?page=${i}` : "#"}
             className="text-sm md:text-lg"
             isActive={i === currentPage}
           >
@@ -54,7 +54,7 @@ const NoticePagination = ({
           links.push(
             <PaginationLink
               key={i}
-              href={i !== currentPage ? `/notice?page=${i}` : "#"}
+              href={i !== currentPage ? `/notices?page=${i}` : "#"}
               className="text-sm md:text-lg"
               isActive={i === currentPage}
             >
@@ -67,7 +67,7 @@ const NoticePagination = ({
           links.push(
             <PaginationLink
               key={i}
-              href={i !== currentPage ? `/notice?page=${i}` : "#"}
+              href={i !== currentPage ? `/notices?page=${i}` : "#"}
               className="text-sm md:text-lg"
               isActive={i === currentPage}
             >
@@ -91,7 +91,7 @@ const NoticePagination = ({
 
         <PaginationNext
           href={
-            currentPage !== totalPages ? `/notice?page=${currentPage + 1}` : "#"
+            currentPage !== totalPages ? `/notices?page=${currentPage + 1}` : "#"
           }
           className="text-sm md:text-lg"
         />
