@@ -1,6 +1,6 @@
 import RightSideMenu from "./RightSideMenu";
 
-const Header = async () => {
+const Header = () => {
   return (
     <header className="w-full fixed h-16 lg:h-20 bg-slate-50 px-4 border-b-2 border-sky-900 z-50">
       <div className="container relative w-full h-full flex flex-row items-center justify-between ">

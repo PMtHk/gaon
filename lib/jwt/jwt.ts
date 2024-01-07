@@ -1,18 +1,16 @@
 // jwt settings
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 const { JWT_SECRET } = process.env;
 
-if (JWT_SECRET === undefined) throw new Error('jwtSecret is not defined');
+if (JWT_SECRET === undefined) throw new Error("jwtSecret is not defined");
 
 // generate accessToken
-export function generateAccess(
-  _id: string,
-  usernmame: string,
-): string {
+export function generateAccess(_id: string, usernmame: string): string {
   return jwt.sign({ _id, username: usernmame }, JWT_SECRET as string, {
-    algorithm: 'HS256',
-    expiresIn: '3h'
+    algorithm: "HS256",
+    expiresIn: "3h",
   });
 }
 
@@ -25,15 +23,15 @@ export function verifyAccess(accessToken: string): {
   let decoded: any = null;
 
   try {
-    decoded = jwt.verify(accessToken, JWT_SECRET as string);
+    decoded = jwt.verify(accessToken.toString(), JWT_SECRET as string);
     return {
       ok: true,
-      _id: decoded._id
+      _id: decoded._id,
     };
   } catch (error: any) {
     return {
       ok: false,
-      message: error.message
+      message: error.message,
     };
   }
 }
@@ -41,8 +39,8 @@ export function verifyAccess(accessToken: string): {
 // generate refreshToken
 export function generateRefresh(_id: string): string {
   return jwt.sign({ _id }, JWT_SECRET as string, {
-    algorithm: 'HS256',
-    expiresIn: '14d'
+    algorithm: "HS256",
+    expiresIn: "14d",
   });
 }
 
@@ -54,12 +52,12 @@ export function verifyRefresh(refreshToken: string): {
   try {
     jwt.verify(refreshToken, JWT_SECRET as string);
     return {
-      ok: true
+      ok: true,
     };
   } catch (error: any) {
     return {
       ok: false,
-      message: error.message
+      message: error.message,
     };
   }
 }

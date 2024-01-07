@@ -1,6 +1,6 @@
 import AdminLoginButton from "./AdminLoginButton";
 
-const Footer = async () => {
+const Footer = () => {
   return (
     <footer className="w-full h-48 bg-neutral-600 px-2 py-2">
       <div className="container h-full relative py-4">

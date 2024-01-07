@@ -6,6 +6,7 @@ import Token from "../models/token.model";
 import User from "../models/user.model";
 import { connectToDB, disconnectFromDB } from "../mongoose/mongoose";
 import { generateAccess, generateRefresh, verifyAccess } from "../jwt/jwt";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 export const createAdmin = async (username: string, password: string) => {
   let result: any = null;
@@ -141,5 +142,49 @@ export const getUserId = () => {
     return user_id;
   } catch (error: any) {
     throw new Error(`로그인 정보 없음. ${error.message}`);
+  }
+};
+
+export const getAuth = async () => {
+  const cookieStore = cookies();
+
+  const accessToken: RequestCookie | undefined =
+    cookieStore.get("gaon_access_token");
+  const refreshToken: RequestCookie | undefined =
+    cookieStore.get("gaon_refresh_token");
+
+  if (!accessToken) {
+    // access token not exist -> check refresh token
+    if (!refreshToken) {
+      return {
+        ok: false,
+        message: "로그인 정보가 없습니다.",
+      };
+    }
+
+    // TODO: refresh access token with refresh token
+  }
+
+  try {
+    // access token exist -> check access token
+    const { ok, _id } = verifyAccess(accessToken?.value!);
+
+    if (!ok) {
+      return {
+        ok: false,
+        message: "로그인 정보가 없습니다.",
+      };
+    }
+
+    return {
+      ok: true,
+      _id
+    };
+  } catch (error: any) {
+    return {
+      ok: false,
+      message: "로그인 정보가 없습니다.",
+      error: error.message,
+    };
   }
 };
