@@ -6,17 +6,17 @@ import { Button } from "./ui/button";
 import useUserStore from "@/store/useUserStore";
 import { useEffect, useState } from "react";
 
-const DeleteNoticeButton = ({ noticeId }: { noticeId: string }) => {
+const NoticeActions = ({ noticeId }: { noticeId: string }) => {
   const router = useRouter();
 
-  const isAdmin = useUserStore((state) => state.isAdmin);
+  const isLogin = useUserStore((state) => state.isLogin);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
-  useEffect(()=> {
-    if (isAdmin) {
+  useEffect(() => {
+    if (isLogin) {
       setIsLoggedIn(true);
     }
-  }, [isAdmin])
+  }, [isLogin]);
 
   const onClick = async () => {
     const response = await deleteNotice(noticeId);
@@ -26,10 +26,17 @@ const DeleteNoticeButton = ({ noticeId }: { noticeId: string }) => {
   };
 
   return (
-    <div>
+    <div className="flex gap-1">
+      {isLoggedIn && (
+        <a href={`/admin/notices/${noticeId}/update`}>
+          <span className="flex items-center justify-center h-12 px-4 text-base font-medium border border-sky-900 rounded-lg hover:bg-sky-100">
+            수정
+          </span>
+        </a>
+      )}
       {isLoggedIn && (
         <Button
-          className="h-12 px-4 text-base font-medium text-white rounded-lg"
+          className="h-12 px-4 text-base font-medium bg-red-700 hover:bg-red-600 text-white rounded-lg"
           onClick={onClick}
           disabled={!isLoggedIn}
         >
@@ -40,4 +47,4 @@ const DeleteNoticeButton = ({ noticeId }: { noticeId: string }) => {
   );
 };
 
-export default DeleteNoticeButton;
+export default NoticeActions;

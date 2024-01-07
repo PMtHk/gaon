@@ -14,7 +14,7 @@ const NoticeRow = ({ _id, id,  title, author, createdAt }: NoticeRowProps) => {
   const router = useRouter();
 
   const onClick = () => {
-    router.push(`/notice/${_id}`);
+    router.push(`/notices/${_id}`);
   };
 
   return (

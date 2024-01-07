@@ -38,7 +38,7 @@ export const createNotice = async (title: string, content: string) => {
   return result;
 };
 
-export const getNoticeList = async (search: string, page: number = 1) => {
+export const getNoticeList = async (search: string = "", page: number = 1) => {
   let result: any = null;
   const limit = 10;
 
@@ -49,7 +49,8 @@ export const getNoticeList = async (search: string, page: number = 1) => {
 
     const noticeList = await Notice.find({
       title: regExp,
-    }).sort({ createdAt: -1 })
+    })
+      .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(limit)
       .populate("author", "username")
@@ -94,21 +95,26 @@ export const getNotice = async (_id: string) => {
   try {
     await connectToDB();
 
-    const notice = await Notice.findById(_id).populate("author", "username").lean();
+    const notice = await Notice.findById(_id)
+      .populate("author", "username")
+      .lean();
     notice.author = notice.author.username;
-    notice.createdAt = notice.createdAt.toLocaleDateString("ko-KR", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-
-    }).replace(".", "년").replace(".", "월").replace(".", "일");
+    notice.createdAt = notice.createdAt
+      .toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      })
+      .replace(".", "년")
+      .replace(".", "월")
+      .replace(".", "일");
 
     result = {
       ok: true,
       notice,
-    }
+    };
   } catch (error: any) {
     result = {
       ok: false,
@@ -118,7 +124,7 @@ export const getNotice = async (_id: string) => {
   }
 
   return result;
-}
+};
 
 export const getPrevNotice = async (_id: string) => {
   let result: any = null;
@@ -128,17 +134,23 @@ export const getPrevNotice = async (_id: string) => {
 
     const prevNotice = await Notice.find({
       _id: { $lt: _id },
-    }).sort({ _id: -1 }).limit(1).lean();
+    })
+      .sort({ _id: -1 })
+      .limit(1)
+      .lean();
 
     prevNotice[0].author = prevNotice[0].author.username;
-    prevNotice[0].createdAt = prevNotice[0].createdAt.toLocaleDateString("ko-KR", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-
-    }).replace(".", "년").replace(".", "월").replace(".", "일");
+    prevNotice[0].createdAt = prevNotice[0].createdAt
+      .toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      })
+      .replace(".", "년")
+      .replace(".", "월")
+      .replace(".", "일");
 
     result = {
       ok: true,
@@ -153,7 +165,7 @@ export const getPrevNotice = async (_id: string) => {
   }
 
   return result;
-}
+};
 
 export const getNextNotice = async (_id: string) => {
   let result: any = null;
@@ -163,17 +175,23 @@ export const getNextNotice = async (_id: string) => {
 
     const nextNotice = await Notice.find({
       _id: { $gt: _id },
-    }).sort({ _id: 1 }).limit(1).lean();
+    })
+      .sort({ _id: 1 })
+      .limit(1)
+      .lean();
 
     nextNotice[0].author = nextNotice[0].author.username;
-    nextNotice[0].createdAt = nextNotice[0].createdAt.toLocaleDateString("ko-KR", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-
-    }).replace(".", "년").replace(".", "월").replace(".", "일");
+    nextNotice[0].createdAt = nextNotice[0].createdAt
+      .toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      })
+      .replace(".", "년")
+      .replace(".", "월")
+      .replace(".", "일");
 
     result = {
       ok: true,
@@ -188,7 +206,7 @@ export const getNextNotice = async (_id: string) => {
   }
 
   return result;
-}
+};
 
 export const deleteNotice = async (_id: string) => {
   let result: any = null;
@@ -203,7 +221,7 @@ export const deleteNotice = async (_id: string) => {
       message: "공지사항이 삭제되었습니다.",
     };
 
-    revalidatePath("/notice");
+    revalidatePath("/notices");
   } catch (error: any) {
     result = {
       ok: false,
@@ -213,4 +231,33 @@ export const deleteNotice = async (_id: string) => {
   }
 
   return result;
-}
+};
+
+export const updateNotice = async (
+  _id: string,
+  title: string,
+  content: string
+) => {
+  let result: any = null;
+
+  try {
+    await connectToDB();
+
+    await Notice.findByIdAndUpdate({ _id }, { title, content });
+
+    result = {
+      ok: true,
+      message: "공지사항이 수정되었습니다.",
+    };
+
+    revalidatePath(`/notices/${_id}`);
+  } catch (error: any) {
+    result = {
+      ok: false,
+      message: "공지사항 수정에 실패했습니다.",
+      error: error.message,
+    };
+  }
+
+  return result;
+};

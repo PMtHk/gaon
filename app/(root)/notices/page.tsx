@@ -48,9 +48,24 @@ const Page = async ({
                 noticeList.map((notice: any, index: number) => (
                   <NoticeRow key={index} {...notice} />
                 ))}
+              {!noticeList ||
+                (noticeList.length === 0 && (
+                  <tr
+                    key={"no_notice"}
+                    className="text-center h-16 border-b-2 hover:bg-slate-100 hover:cursor-pointer"
+                  >
+                    <td className="hidden md:table-cell text-slate-400">-</td>
+                    <td className="text-left pl-2 md:pl-4">
+                      검색된 게시글이 없습니다.
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
+      </div>
+      <div className="container w-full flex justify-end items-end pt-2 px-1">
+        <a href="/admin/new-notice" className="border border-sky-900 p-1 px-2 md:p-2 md:px-4 rounded-lg hover:bg-sky-900 hover:text-white duration-150">글쓰기</a>
       </div>
       <div className="mt-4">
         <NoticePagination currentPage={currentPage} totalPages={totalPages} />

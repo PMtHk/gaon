@@ -35,7 +35,7 @@ const QuillNoSSRWrapper = dynamic(
   },
   {
     loading: () => (
-      <Skeleton className="w-full h-[600px] rounded-2xl flex justify-center items-center">
+      <Skeleton className="w-full h-[calc(50vh)] rounded-2xl flex justify-center items-center">
         텍스트 에디터를 불러오는 중입니다.
       </Skeleton>
     ),

@@ -26,9 +26,17 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { createNotice } from "@/lib/actions/notice.actions";
+import { updateNotice } from "@/lib/actions/notice.actions";
 
-const NoticeForm = () => {
+const NoticeUpdateForm = ({
+  noticeId,
+  title,
+  content,
+}: {
+  noticeId: string;
+  title: string;
+  content: string;
+}) => {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -47,8 +55,8 @@ const NoticeForm = () => {
   const form = useForm({
     resolver: zodResolver(NoticeFormValidation),
     defaultValues: {
-      title: "",
-      content: "",
+      title: title,
+      content: content,
     },
   });
 
@@ -56,7 +64,30 @@ const NoticeForm = () => {
     setIsLoading(true);
 
     try {
-      const res = await createNotice(
+
+      if (noticeId === "") {
+        setIsLoading(false);
+        setAlert({
+          isOpen: true,
+          title: "공지사항 수정 실패",
+          message: "공지사항 ID가 없습니다.",
+          onClick: () => {
+            setAlert({
+              isOpen: false,
+              title: "",
+              message: "",
+              onClick: () => {
+                router.push("/notices");
+              },
+            });
+          },
+        });
+
+        return;
+      }
+
+      const res = await updateNotice(
+        noticeId,
         form.getValues("title"),
         form.getValues("content")
       );
@@ -65,7 +96,7 @@ const NoticeForm = () => {
         setIsLoading(false);
         setAlert({
           isOpen: true,
-          title: "공지사항 작성 실패",
+          title: "공지사항 수정 실패",
           message: res.message,
           onClick: () => {
             setAlert({
@@ -85,7 +116,7 @@ const NoticeForm = () => {
       setIsLoading(false);
       setAlert({
         isOpen: true,
-        title: "공지사항 작성 실패",
+        title: "공지사항 수정 실패",
         message: error.message,
         onClick: () => {
           setAlert({
@@ -152,7 +183,7 @@ const NoticeForm = () => {
             className="w-full text-base"
             disabled={isLoading}
           >
-            작성하기
+            수정하기
           </Button>
         </form>
       </Form>
@@ -172,4 +203,4 @@ const NoticeForm = () => {
   );
 };
 
-export default NoticeForm;
+export default NoticeUpdateForm;

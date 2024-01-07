@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
 interface UserStaete {
-  isAdmin: boolean;
-  setIsAdmin: (isAdmin: boolean) => void;
+  isLogin: boolean;
+  setIsLogin: (isLogin: boolean) => void;
   accessToken: string;
   setAccessToken: (accessToken: string) => void;
 }
@@ -11,10 +11,20 @@ interface UserStaete {
 const useUserStore = create<UserStaete>()(
   persist(
     (set) => ({
-      isAdmin: false,
-      setIsAdmin: (isAdmin: boolean) => set({ isAdmin }),
+      isLogin: false,
+      setIsLogin: (isLogin: boolean) => {
+        set({ isLogin });
+        setTimeout(() => {
+          set({ isLogin: false });
+        }, 1000 * 60 * 60 * 3);
+      },
       accessToken: "",
-      setAccessToken: (accessToken: string) => set({ accessToken }),
+      setAccessToken: (accessToken: string) => {
+        set({ accessToken });
+        setTimeout(() => {
+          set({ accessToken: "" });
+        }, 1000 * 60 * 60 * 3);
+      },
     }),
     {
       name: "gaon_user_store",

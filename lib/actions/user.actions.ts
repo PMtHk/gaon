@@ -88,7 +88,7 @@ export const login = async (username: string, password: string) => {
       name: "gaon_access_token",
       value: accessToken,
       path: "/",
-      expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 14),
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 3),
       httpOnly: true,
       sameSite: "strict",
     });

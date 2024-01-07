@@ -13,7 +13,7 @@ const Search = ({ search = "" }: SearchProps) => {
   const [input, setInput] = useState(search);
 
   const onClick = () => {
-    router.push(`/notice?search=${input}`);
+    router.push(`/notices?search=${input}`);
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,8 +21,14 @@ const Search = ({ search = "" }: SearchProps) => {
     setInput(e.target.value);
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClick();
+    }
+  }
+
   return (
-    <div className="w-full flex flex-row justify-center items-center px-2">
+    <div className="w-full flex flex-row justify-center items-center px-2" onKeyDown={onKeyDown}>
       <input
         type="text"
         aria-label="공지사항 검색어 입력란"

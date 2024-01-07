@@ -1,3 +1,4 @@
+import NoticeActions from "@/components/NoticeActions.button";
 import { Separator } from "@/components/ui/separator";
 import {
   getNextNotice,
@@ -48,10 +49,10 @@ const NoticeViewPage = async ({
               ? `/notice/${nextNotice.nextNotice?._id}`
               : "#"
           }
-          className="mb-0.5 w-full h-12 flex items-center px-4 gap-2 border-2 rounded-md border-slate-200 hover:bg-slate-100"
+          className="mb-0.5 w-full min-h-12 flex items-center px-4 gap-2 border-2 rounded-md border-slate-200 hover:bg-slate-100"
         >
           <span className="flex-none">다음글</span>
-          <span className="grow pl-4">
+          <span className="grow pl-4 py-1">
             {nextNotice.nextNotice
               ? nextNotice.nextNotice.title
               : "다음글이 존재하지 않습니다."}
@@ -68,10 +69,10 @@ const NoticeViewPage = async ({
               ? `/notice/${prevNotice.prevNotice?._id}`
               : "#"
           }
-          className="w-full h-12 flex items-center px-4 gap-2 border-2 rounded-md border-slate-200 hover:bg-slate-100"
+          className="w-full min-h-12 flex items-center px-4 gap-2 border-2 rounded-md border-slate-200 hover:bg-slate-100"
         >
           <span className="flex-none">이전글</span>
-          <span className="grow pl-4">
+          <span className="grow pl-4 py-1">
             {prevNotice.prevNotice
               ? prevNotice.prevNotice.title
               : "이전글이 존재하지 않습니다."}
@@ -84,6 +85,7 @@ const NoticeViewPage = async ({
         </a>
       </div>
       <div className="flex justify-end items-center mt-1 mb-10 gap-1">
+        <NoticeActions noticeId={objectId} />
         <a
           href="/notice"
           className="h-12  rounded-lg text-sky-900 border border-sky-900  flex items-center justify-center px-2 hover:bg-sky-100"

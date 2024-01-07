@@ -33,7 +33,7 @@ import { login } from "@/lib/actions/user.actions";
 const LoginForm = () => {
   const router = useRouter();
 
-  const setIsAdmin = useUserStroe((state) => state.setIsAdmin);
+  const setIsLogin = useUserStroe((state) => state.setIsLogin);
   const setAccessToken = useUserStroe((state) => state.setAccessToken);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -100,7 +100,7 @@ const LoginForm = () => {
         return;
       }
 
-      setIsAdmin(true);
+      setIsLogin(true);
       setAccessToken(res.accessToken);
 
       setIsLoading(false);

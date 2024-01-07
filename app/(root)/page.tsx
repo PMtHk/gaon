@@ -1,10 +1,10 @@
 import Image from "next/image";
-import CallInfo from "../components/CallInfo";
-import Notice from "../components/Notice";
-import VisitingCare from "../components/services/VisitingCare";
-import VisitinbBathe from "../components/services/VisitinbBathe";
-import Ranking from "../components/services/Ranking";
-import CareTool from "../components/services/CareTool";
+import CallInfo from "../../components/CallInfo";
+import Notice from "../../components/Notice";
+import VisitingCare from "../../components/services/VisitingCare";
+import VisitinbBathe from "../../components/services/VisitinbBathe";
+import Ranking from "../../components/services/Ranking";
+import CareTool from "../../components/services/CareTool";
 
 export default function Home() {
   return (
@@ -38,7 +38,7 @@ export default function Home() {
 
       <div className="container py-12">
         <div className="flex flex-col justify-center items-center mb-12">
-          <p className="text-3xl lg:text-5xl font-semibold text-slate-700">
+          <p className="text-3xl lg:text-5xl font-semibold text-sky-900">
             가온 공지사항
           </p>
         </div>
@@ -51,7 +51,7 @@ export default function Home() {
       <div className="bg-neutral-200 py-12">
         <div className="container pt-16">
           <div className="flex flex-col justify-center items-center mb-12">
-            <p className="text-3xl lg:text-5xl font-semibold text-slate-700">
+            <p className="text-3xl lg:text-5xl font-semibold text-sky-900">
               가온 방문요양서비스
             </p>
           </div>
