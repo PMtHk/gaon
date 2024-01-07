@@ -1,4 +1,3 @@
-import DeleteNoticeButton from "@/components/DeleteNotice.button";
 import { Separator } from "@/components/ui/separator";
 import {
   getNextNotice,
@@ -85,7 +84,6 @@ const NoticeViewPage = async ({
         </a>
       </div>
       <div className="flex justify-end items-center mt-1 mb-10 gap-1">
-        <DeleteNoticeButton noticeId={notice._id.toString()} />
         <a
           href="/notice"
           className="h-12  rounded-lg text-sky-900 border border-sky-900  flex items-center justify-center px-2 hover:bg-sky-100"

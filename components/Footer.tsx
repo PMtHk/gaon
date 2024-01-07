@@ -1,10 +1,10 @@
-import ToLoginButton from "./LoginButtn";
+import AdminLoginButton from "./AdminLoginButton";
 
 const Footer = async () => {
   return (
-    <footer className="w-full h-48 bg-neutral-600 px-2">
+    <footer className="w-full h-48 bg-neutral-600 px-2 py-2">
       <div className="container h-full relative py-4">
-        <div className="relative flex flex-col text-slate-200 text-sm  sm:text-base justify-center gap-1">
+        <div className="relative flex flex-col text-slate-200 text-sm  justify-center gap-1">
           <div>
             <span className="mr-4">상호명 : 가온방문요양센터</span>
             <span>사업자 등록번호 : 123-45-67890</span>
@@ -18,7 +18,7 @@ const Footer = async () => {
           </div>
           <span>도로명주소 : 인천광역시 서구 승학로 403, 203호</span>
           <div className="mt-4 sm:mt-2 md:absolute md:mt-0 right-2 md:top-0">
-            <ToLoginButton />
+            <AdminLoginButton />
           </div>
         </div>
         <div className="absolute bottom-2">

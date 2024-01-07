@@ -21,14 +21,14 @@ const Header = async () => {
         <nav className="hidden md:flex h-full items-center text-lg lg:text-xl font-semibold text-gray-700">
           <div className="group h-full w-28 relative inline-block m-auto">
             <a
-              href="/about"
+              href="/greetings"
               className="h-full w-full flex items-center justify-center group-hover:scale-110 transition-all duration-300"
             >
               센터소개
             </a>
             <div className="opacity-0 -translate-y-2 w-28 group-hover:opacity-100 group-hover:translate-y-0 flex flex-col bg-slate-50 border-sky-900 transition-all duration-500 mt-2 border-2 rounded-md">
               <div className="w-full h-12 flex items-center justify-center hover:bg-sky-900 hover:text-slate-50 border-b-2 border-sky-900">
-                <a href="/about" className="no-underline block text-base">
+                <a href="/greetings" className="no-underline block text-base">
                   인사말
                 </a>
               </div>
@@ -39,7 +39,8 @@ const Header = async () => {
               </div>
             </div>
           </div>
-          <div className="group h-full w-48 relative inline-block m-auto">
+
+          {/* <div className="group h-full w-48 relative inline-block m-auto">
             <a
               href="/policy"
               className="h-full w-full flex items-center justify-center group-hover:scale-110 transition-all duration-300"
@@ -61,10 +62,11 @@ const Header = async () => {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
+
           <div className="group h-full w-28 relative inline-block m-auto">
             <a
-              href="/notice"
+              href="/notices"
               className="h-full w-full flex items-center justify-center group-hover:scale-110 transition-all duration-300"
             >
               공지사항

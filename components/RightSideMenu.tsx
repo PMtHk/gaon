@@ -53,26 +53,26 @@ const RightSideMenu = () => {
           </SheetDescription>
         </SheetHeader>
         <nav className="flex flex-col justify-center items-center mt-6 text-xl font-semibold gap-4">
-          <a href="/about" className="text-2xl font-bold mt-2 text-sky-900">
+          <a href="/greetings" className="text-2xl font-bold mt-2 text-sky-900">
             센터소개
           </a>
           <Separator className="mt-1" />
 
-          <a href="/about">인사말</a>
+          <a href="/greetings">인사말</a>
           <a href="/directions">오시는 길</a>
 
-          <a href="/policy" className="text-2xl font-bold mt-6 text-sky-900">
+          {/* <a href="/policy" className="text-2xl font-bold mt-6 text-sky-900">
             노인장기요양보험
           </a>
           <Separator className="mt-1" />
           <a href="/policy">노인장기요양보험이란?</a>
-          <a href="/visiting-care">방문요양 서비스 소개</a>
+          <a href="/visiting-care">방문요양 서비스 소개</a> */}
 
-          <a href="/notice" className="text-2xl font-bold mt-6 text-sky-900">
+          <a href="/notices" className="text-2xl font-bold mt-6 text-sky-900">
             공지사항
           </a>
           <Separator className="mt-1" />
-          <a href="/notice">공지사항</a>
+          <a href="/notices">공지사항</a>
         </nav>
       </SheetContent>
     </Sheet>
