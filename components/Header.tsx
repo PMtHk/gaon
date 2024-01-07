@@ -1,5 +1,4 @@
 import RightSideMenu from "./RightSideMenu";
-import { menus } from "./menus";
 
 const Header = async () => {
   const links = [
