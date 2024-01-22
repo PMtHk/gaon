@@ -142,24 +142,39 @@ const Page = () => {
             등급판정 기준 및 절차
           </h2>
           <div className="w-full mt-10 flex flex-col items-center justify-center">
-            <h3 className="text-xl mb-4">등급판정 기준</h3>
+            <h3 className="text-xl mb-4 font-semibold">등급판정 기준</h3>
             <Criteria />
           </div>
 
           <div className="w-full mt-24 flex flex-col items-center justify-center">
-            <h3 className="text-xl mb-4">등급판정 절차</h3>
+            <h3 className="text-xl mb-4 font-semibold">등급판정 절차</h3>
             <MobileProcedure />
             <PCProcedure />
           </div>
 
           <div className="w-full mt-24 flex flex-col items-center justify-center">
-            <h3 className="text-xl mb-4">방문조사</h3>
-            <span className=" break-keep mb-4">
+            <h3 className="text-xl mb-4 font-semibold">방문조사</h3>
+            <span className="break-keep mb-4 md:text-lg">
               인정신청을 하게 되면 간호사, 사회복지사, 물리치료사 등으로 구성된
-              공단 소속장기요양 직원이 직접 방문하여<br className="hidden md:block"/>「장기요양인정조사표」에
-              따라 아래의 항목을 조사합니다.
+              공단 소속장기요양 직원이 직접 방문하여
+              <br className="hidden md:block" />
+              「장기요양인정조사표」에 따라 아래의 항목을 조사합니다.
             </span>
             <ServeyItems />
+          </div>
+
+          <div className="w-full mt-12 flex flex-col items-center justify-center">
+            <p className="md:text-lg">
+              더 자세한 내용은{" "}
+              <a
+                href="https://www.longtermcare.or.kr/npbs/e/b/201/npeb201m01.web?menuId=npe0000000080&prevPath=/npbs/e/b/101/npeb101m01.web"
+                target="_blank"
+                className="underline"
+              >
+                여기
+              </a>
+              에서 확인하실 수 있습니다.
+            </p>
           </div>
         </div>
       </div>
@@ -527,7 +542,7 @@ const Criteria = () => {
 
 const ServeyItems = () => {
   return (
-    <table className="w-full lg:text-lg">
+    <table className="w-full lg:text-lg font-medium">
       <colgroup>
         <col className="w-[20%]" />
         <col />
@@ -553,7 +568,7 @@ const ServeyItems = () => {
       <tbody>
         <tr>
           <th
-            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            className="p-2 bg-slate-200 border-b border-r border-slate-300 font-medium"
             scope="row"
           >
             신체기능
@@ -579,7 +594,7 @@ const ServeyItems = () => {
         </tr>
         <tr>
           <th
-            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            className="p-2 bg-slate-200 border-b border-r border-slate-300 font-medium"
             scope="row"
           >
             인지기능
@@ -600,7 +615,7 @@ const ServeyItems = () => {
         </tr>
         <tr>
           <th
-            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            className="p-2 bg-slate-200 border-b border-r border-slate-300 font-medium"
             scope="row"
           >
             행동변화
@@ -628,7 +643,7 @@ const ServeyItems = () => {
         </tr>
         <tr>
           <th
-            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            className="p-2 bg-slate-200 border-b border-r border-slate-300 font-medium"
             scope="row"
           >
             간호처치
@@ -651,7 +666,7 @@ const ServeyItems = () => {
         </tr>
         <tr>
           <th
-            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            className="p-2 bg-slate-200 border-b border-r border-slate-300 font-medium"
             scope="rowgroup"
             rowSpan={2}
           >
