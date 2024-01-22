@@ -61,12 +61,12 @@ const RightSideMenu = () => {
           <a href="/greetings">인사말</a>
           <a href="/directions">오시는 길</a>
 
-          {/* <a href="/policy" className="text-2xl font-bold mt-6 text-sky-900">
+          <a href="/policy" className="text-2xl font-bold mt-6 text-sky-900">
             노인장기요양보험
           </a>
           <Separator className="mt-1" />
           <a href="/policy">노인장기요양보험이란?</a>
-          <a href="/visiting-care">방문요양 서비스 소개</a> */}
+          <a href="/visiting-care">방문요양 서비스 소개</a>
 
           <a href="/notices" className="text-2xl font-bold mt-6 text-sky-900">
             공지사항
