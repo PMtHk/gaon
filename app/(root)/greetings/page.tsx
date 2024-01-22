@@ -11,7 +11,7 @@ const Page = () => {
       </div>
 
       <div className="flex justify-center p-4">
-        <div className="text-left text-lg">
+        <div className="text-left text-lg max-w-[800px]">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
             interdum dolor mollis lectus auctor vehicula. In commodo ornare
@@ -35,7 +35,10 @@ const Page = () => {
           </p>
           <p className="text-right align-text-bottom mt-10 mr-4 text-slate-600">
             센터장/사회복지사
-            <span className="text-black text-2xl font-semibold"> 이 윤 정 </span>
+            <span className="text-black text-2xl font-semibold">
+              {" "}
+              이 윤 정{" "}
+            </span>
           </p>
         </div>
       </div>
