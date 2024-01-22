@@ -20,8 +20,8 @@ const Header = () => {
             >
               센터소개
             </a>
-            <div className="opacity-0 -translate-y-2 w-28 group-hover:opacity-100 group-hover:translate-y-0 flex flex-col bg-slate-50 border-sky-900 transition-all duration-500 mt-2 border-2 rounded-md">
-              <div className="w-full h-12 flex items-center justify-center hover:bg-sky-900 hover:text-slate-50 border-b-2 border-sky-900">
+            <div className="opacity-0 -translate-y-2 w-28 group-hover:opacity-100 group-hover:translate-y-0 flex flex-col bg-slate-50 border-sky-900 transition-all duration-500 mt-2 border rounded-md">
+              <div className="w-full h-12 flex items-center justify-center hover:bg-sky-900 hover:text-slate-50 border-b border-sky-900">
                 <a href="/greetings" className="no-underline block text-base">
                   인사말
                 </a>
@@ -41,8 +41,8 @@ const Header = () => {
             >
               노인장기요양보험
             </a>
-            <div className="opacity-0 -translate-y-2 w-48 group-hover:opacity-100 group-hover:translate-y-0 flex flex-col bg-slate-50 border-sky-900 transition-all duration-500 mt-2 border-2 rounded-md">
-              <div className="w-full h-12 flex items-center justify-center hover:bg-sky-900 hover:text-slate-50 border-b-2 border-sky-900">
+            <div className="opacity-0 -translate-y-2 w-48 group-hover:opacity-100 group-hover:translate-y-0 flex flex-col bg-slate-50 border-sky-900 transition-all duration-500 mt-2 border rounded-md">
+              <div className="w-full h-12 flex items-center justify-center hover:bg-sky-900 hover:text-slate-50 border-b border-sky-900">
                 <a href="/policy" className="no-underline block text-base">
                   노인장기요양보험이란?
                 </a>
