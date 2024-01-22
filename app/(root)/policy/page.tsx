@@ -28,7 +28,7 @@ const Page = () => {
             장기요양인정 및 이용절차
           </h2>
           <div className="w-full grid gap-x-8 gap-y-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4">
+            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4 hover:bg-sky-200">
               <svg
                 width="64px"
                 height="64px"
@@ -48,7 +48,7 @@ const Page = () => {
               <span className="break-keep">장기요양인정신청 및 방문조사</span>
             </div>
 
-            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4">
+            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4 hover:bg-sky-200">
               <svg
                 width="64px"
                 height="64px"
@@ -69,7 +69,7 @@ const Page = () => {
               </span>
             </div>
 
-            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4">
+            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4 hover:bg-sky-200">
               <svg
                 width="64px"
                 height="64px"
@@ -112,7 +112,7 @@ const Page = () => {
               </span>
             </div>
 
-            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4">
+            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4 hover:bg-sky-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="64px"
@@ -137,17 +137,29 @@ const Page = () => {
           </div>
         </div>
 
-        <div className="w-full mt-32 text-center">
+        <div className="w-full mt-32 text-center pb-24">
           <h2 className="text-2xl md:text-3xl font-semibold text-sky-900 mb-12">
             등급판정 기준 및 절차
           </h2>
-          <div>
-            <h3 className="text-xl mb-4">등급판정 기준</h3>
-          </div>
           <div className="w-full mt-10 flex flex-col items-center justify-center">
+            <h3 className="text-xl mb-4">등급판정 기준</h3>
+            <Criteria />
+          </div>
+
+          <div className="w-full mt-24 flex flex-col items-center justify-center">
             <h3 className="text-xl mb-4">등급판정 절차</h3>
             <MobileProcedure />
             <PCProcedure />
+          </div>
+
+          <div className="w-full mt-24 flex flex-col items-center justify-center">
+            <h3 className="text-xl mb-4">방문조사</h3>
+            <span className=" break-keep mb-4">
+              인정신청을 하게 되면 간호사, 사회복지사, 물리치료사 등으로 구성된
+              공단 소속장기요양 직원이 직접 방문하여<br className="hidden md:block"/>「장기요양인정조사표」에
+              따라 아래의 항목을 조사합니다.
+            </span>
+            <ServeyItems />
           </div>
         </div>
       </div>
@@ -244,7 +256,7 @@ const PCProcedure = () => {
             <br />
             2. 특이사항 조사
           </td>
-         
+
           <td className="border border-slate-200 rounded-xl p-4">
             장기요양인정
             <br />
@@ -440,6 +452,238 @@ const MobileProcedure = () => {
             colSpan={3}
           >
             1 ~ 5, 인지지원 등급
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
+
+const Criteria = () => {
+  return (
+    <table className="w-[80%] text-lg">
+      <tbody>
+        <tr className="bg-sky-100">
+          <th className="w-[15%] p-4 border-r border-b border-sky-300">등급</th>
+          <th className="text-left p-4 border-r border-b border-sky-300">
+            심신의 기능상태
+          </th>
+          <th className="p-4 border-b border-sky-300">장기요양인정점수</th>
+        </tr>
+        <tr>
+          <td className="p-2 border-r border-b border-slate-200">1등급</td>
+          <td className="p-2 text-left border-r border-b border-slate-200">
+            심신의 기능상태 장애로 일상생활에서 전적으로 다른 사람의 도움이
+            필요한 자
+          </td>
+          <td className="p-2 border-b border-slate-200">95점이상</td>
+        </tr>
+        <tr>
+          <td className="p-2 border-r border-b border-slate-200">2등급</td>
+          <td className="p-2 text-left border-r border-b border-slate-200">
+            심신의 기능상태 장애로 일상생활에서 상당 부분 다른 사람의 도움이
+            필요한 자
+          </td>
+          <td className="p-2 border-b border-slate-200">75점이상 95점 미만</td>
+        </tr>
+        <tr>
+          <td className="p-2 border-r border-b border-slate-200">3등급</td>
+          <td className="p-2 text-left border-r border-b border-slate-200">
+            심신의 기능상태 장애로 일상생활에서 부분적으로 다른 사람의 도움이
+            필요한 자
+          </td>
+          <td className="p-2 border-b border-slate-200">60점 이상 75점 미만</td>
+        </tr>
+        <tr>
+          <td className="p-2 border-r border-b border-slate-200">4등급</td>
+          <td className="p-2 text-left border-r border-b border-slate-200">
+            심신의 기능상태 장애로 일상생활에서 일정 부분 다른 사람의 도움이
+            필요한 자
+          </td>
+          <td className="p-2 border-b border-slate-200">51점 이상 60점 미만</td>
+        </tr>
+        <tr>
+          <td className="p-2 border-r border-b border-slate-200">5등급</td>
+          <td className="p-2 text-left border-r border-b border-slate-200">
+            치매환자(노인장기요양보험법 시행령 제2조에 따른 노인성 질병으로
+            한정)
+          </td>
+          <td className="p-2 border-b border-slate-200">45점 이상 51점 미만</td>
+        </tr>
+        <tr>
+          <td className="p-2 border-r border-b border-slate-200">
+            인지지원등급
+          </td>
+          <td className="p-2 text-left border-r border-b border-slate-200">
+            치매환자(노인장기요양보험법 시행령 제2조에 따른 노인성 질병으로
+            한정)
+          </td>
+          <td className="p-2 border-b border-slate-200">45점 미만</td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
+
+const ServeyItems = () => {
+  return (
+    <table className="w-full lg:text-lg">
+      <colgroup>
+        <col className="w-[20%]" />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <thead>
+        <tr className="border-t-2 border-sky-500">
+          <th className="p-2 bg-slate-200 border-b border-r border-slate-300">
+            영역
+          </th>
+          <th
+            className="p-2 bg-slate-200 border-b border-slate-300"
+            scope="colgroup"
+            colSpan={5}
+          >
+            항목
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th
+            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            scope="row"
+          >
+            신체기능
+            <br />
+            (12항목)
+          </th>
+          <td colSpan={5} className="border-b border-slate-300">
+            <ul className="grid grid-cols-3 p-2 text-left">
+              <li>· 옷벗고 입기</li>
+              <li>· 세수하기</li>
+              <li>· 양치질하기</li>
+              <li>· 식사하기</li>
+              <li>· 목욕하기</li>
+              <li>· 체위변경하기</li>
+              <li>· 일어나 앉기</li>
+              <li>· 옮겨앉기</li>
+              <li>· 방밖으로 나오기</li>
+              <li>· 화장실 사용하기</li>
+              <li>· 대변 조절하기</li>
+              <li>· 소변 조절하기</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th
+            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            scope="row"
+          >
+            인지기능
+            <br />
+            (7항목)
+          </th>
+          <td colSpan={5} className="border-b border-slate-300">
+            <ul className="grid grid-cols-3 p-2 text-left">
+              <li>· 단기 기억장애</li>
+              <li>· 지시불인지</li>
+              <li>· 날짜불인지</li>
+              <li>· 상황판단력 감퇴</li>
+              <li>· 장소불인지</li>
+              <li>· 의사소통/전달장애</li>
+              <li>· 나이/생년월일 불인지</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th
+            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            scope="row"
+          >
+            행동변화
+            <br />
+            (14항목)
+          </th>
+          <td colSpan={5} className="border-b border-slate-300">
+            <ul className="grid grid-cols-3 p-2 text-left">
+              <li>· 망상</li>
+              <li>· 서성거림,안절부절못함</li>
+              <li>· 물건 망가트리기</li>
+              <li>· 환청,환각</li>
+              <li>· 길을 잃음</li>
+              <li>· 돈/물건감추기</li>
+              <li>· 슬픈상태,울기도함</li>
+              <li>· 폭언,위협행동</li>
+              <li>· 부적절한 옷입기</li>
+              <li>· 불규칙수면,주야혼돈</li>
+              <li>· 밖으로 나가려함</li>
+              <li>· 대/소변 불결행위</li>
+              <li>· 도움에 저항</li>
+              <li>· 의미가 없거나 부적절한 행동</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th
+            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            scope="row"
+          >
+            간호처치
+            <br />
+            (9항목)
+          </th>
+          <td colSpan={5} className="border-b border-slate-300">
+            <ul className="grid grid-cols-3 p-2 text-left">
+              <li>· 기관지절개관 간호</li>
+              <li>· 경관영양</li>
+              <li>· 도뇨관리</li>
+              <li>· 흡인</li>
+              <li>· 욕창간호</li>
+              <li>· 장루간호</li>
+              <li>· 산소요법</li>
+              <li>· 암성통증간호</li>
+              <li>· 투석간호</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th
+            className="p-2 bg-slate-200 border-b border-r border-slate-300"
+            scope="rowgroup"
+            rowSpan={2}
+          >
+            재활
+            <br />
+            (10항목)
+          </th>
+          <td colSpan={2} className="border-b border-r border-slate-300">
+            운동장애(4항목)
+          </td>
+          <td colSpan={3} className="border-b border-slate-300">
+            관절제한(6항목)
+          </td>
+        </tr>
+        <tr>
+          <td colSpan={2} className="border-b border-r border-slate-300">
+            <ul className="grid grid-cols-2 p-2 text-left">
+              <li>· 우측상지</li>
+              <li>· 우측하지</li>
+              <li>· 좌측상지</li>
+              <li>· 좌측하지</li>
+            </ul>
+          </td>
+          <td colSpan={3} className="border-b border-slate-300">
+            <ul className="grid grid-cols-2 p-2 text-left">
+              <li>· 어깨관절</li>
+              <li>· 팔꿈치관절</li>
+              <li>· 손목 및 수지관절</li>
+              <li>· 고관절</li>
+              <li>· 무릎관절</li>
+              <li>· 발목관절</li>
+            </ul>
           </td>
         </tr>
       </tbody>
