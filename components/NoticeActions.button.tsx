@@ -36,7 +36,7 @@ const NoticeActions = ({ noticeId }: { noticeId: string }) => {
       )}
       {isLoggedIn && (
         <Button
-          className="h-12 px-4 text-base font-medium bg-red-700 hover:bg-red-600 text-white rounded-lg"
+          className="h-12 px-4 text-base font-medium bg-red-600 hover:bg-red-700 text-white rounded-lg"
           onClick={onClick}
           disabled={!isLoggedIn}
         >
