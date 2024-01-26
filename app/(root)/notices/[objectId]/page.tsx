@@ -5,6 +5,7 @@ import {
   getNotice,
   getPrevNotice,
 } from "@/lib/actions/notice.actions";
+import { notFound } from "next/navigation";
 
 const NoticeViewPage = async ({
   params: { objectId },
@@ -14,6 +15,9 @@ const NoticeViewPage = async ({
   const response = await getNotice(objectId);
 
   const { notice } = response;
+  if (!notice) {
+    notFound();
+  }
   const { title, author, createdAt, content } = notice;
 
   const prevNotice = await getPrevNotice(objectId);

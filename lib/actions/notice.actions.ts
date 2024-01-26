@@ -49,6 +49,7 @@ export const getNoticeList = async (search: string = "", page: number = 1) => {
 
     const noticeList = await Notice.find({
       title: regExp,
+      isDeleted: false,
     })
       .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
@@ -134,6 +135,7 @@ export const getPrevNotice = async (_id: string) => {
 
     const prevNotice = await Notice.find({
       _id: { $lt: _id },
+      isDeleted: false,
     })
       .sort({ _id: -1 })
       .limit(1)
@@ -175,6 +177,7 @@ export const getNextNotice = async (_id: string) => {
 
     const nextNotice = await Notice.find({
       _id: { $gt: _id },
+      isDeleted: false,
     })
       .sort({ _id: 1 })
       .limit(1)
@@ -214,7 +217,9 @@ export const deleteNotice = async (_id: string) => {
   try {
     await connectToDB();
 
-    await Notice.findByIdAndDelete(_id);
+    await Notice.findByIdAndUpdate(_id, {
+      isDeleted: true,
+    });
 
     result = {
       ok: true,

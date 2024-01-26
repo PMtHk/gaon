@@ -15,10 +15,10 @@ const NotFound = () => {
         <ellipse cx="10.825" cy="16.711" rx="1.275" ry="1.322" />
       </svg>
       <h1 className="text-2xl lg:text-3xl font-semibold text-sky-900">
-        페이지가 존재하지 않습니다.
+        해당 공지사항을 찾을 수 없습니다.
       </h1>
       <a
-        href="/"
+        href="/notices"
         className="mt-8 text-sky-900 flex items-center justify-center p-2 rounded-md hover:bg-sky-100"
       >
         <svg
@@ -33,7 +33,7 @@ const NotFound = () => {
             fill="#21496B"
           />
         </svg>
-        홈으로 돌아가기
+        목록으로 돌아가기
       </a>
     </div>
   );

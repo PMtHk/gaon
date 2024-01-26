@@ -27,7 +27,7 @@ const Page = () => {
           <h2 className="text-2xl md:text-3xl font-semibold text-sky-900 mb-12">
             장기요양인정 및 이용절차
           </h2>
-          <div className="w-full grid gap-x-8 gap-y-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <div className="w-full grid gap-x-8 gap-y-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:text-lg">
             <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4 hover:bg-sky-200 transition-colors duration-500">
               <svg
                 width="64px"
