@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { NoticeFormValidation } from "@/lib/validations/notice.validations";
+import { NoticeFormValidation } from "@/lib/validations/notice.validation";
 import {
   Form,
   FormControl,

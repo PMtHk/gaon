@@ -11,7 +11,7 @@ const Page = async () => {
         </a>
         <a
           className="p-4 py-12 rounded-lg text-center bg-sky-700 lg:text-lg font-semibold text-white hover:bg-sky-600 hover:-translate-y-0.5 transform transition-all"
-          href="/admin/new-notice"
+          href="/notices"
         >
           공지사항 관리
         </a>
@@ -21,7 +21,7 @@ const Page = async () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-x-4 gap-y-1">
         <a
           className="p-4 py-12 rounded-lg text-center bg-sky-700 lg:text-lg font-semibold text-white hover:bg-sky-600 hover:-translate-y-0.5 transform transition-all"
-          href="/admin/new-notice"
+          href="#"
         >
           상담신청 목록
         </a>
@@ -31,7 +31,7 @@ const Page = async () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-x-4 gap-y-1">
         <a
           className="p-4 py-12 rounded-lg text-center bg-sky-700 lg:text-lg font-semibold text-white hover:bg-sky-600 hover:-translate-y-0.5 transform transition-all"
-          href="/admin/new-notice"
+          href="#"
         >
           관리자 아이디 추가
         </a>

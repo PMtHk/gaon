@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { LoginFormValidation } from "@/lib/validations/user.validations";
+import { LoginFormValidation } from "@/lib/validations/user.validation";
 
 import useUserStroe from "@/store/useUserStore";
 
@@ -172,7 +172,7 @@ const LoginForm = () => {
             />
           </div>
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full" disabled={isLoading}>
             관리자 로그인하기
           </Button>
         </form>
