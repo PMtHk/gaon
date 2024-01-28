@@ -111,7 +111,7 @@ const NoticeUpdateForm = ({
         return;
       }
 
-      router.push("/notices");
+      router.push(`/notices/${noticeId}`);
     } catch (error: any) {
       setIsLoading(false);
       setAlert({

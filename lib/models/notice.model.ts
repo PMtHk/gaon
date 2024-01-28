@@ -15,6 +15,7 @@ noticeSchema.plugin(AutoIncrement, { inc_field: "id" });
 interface NoticeDocument extends mongoose.Document {}
 
 let Notice: any = null;
+
 if (mongoose.models.Notice !== undefined) {
   Notice = mongoose.models.Notice;
 } else {

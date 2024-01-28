@@ -7,8 +7,7 @@ const Footer = () => {
         <div className="relative flex flex-col text-slate-200 text-sm justify-center items-center gap-1">
           <div>
             <span className="mr-4">상호명 : 가온방문요양센터</span>
-            <span>사업자 등록번호 : 123-45-67890</span>
-            {/* TODO: 사업자 등록번호 입력할 것 */}
+            <span>사업자 등록번호 : 303-80-28044</span>
           </div>
           <div>
             <a className="mr-4" href="tel:032-566-6645">

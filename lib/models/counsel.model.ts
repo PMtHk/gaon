@@ -1,19 +1,18 @@
 import mongoose from "mongoose";
 
 const counselSchema = new mongoose.Schema({
-  name: String,
-  phone: String,
-  prefer_time: String,
-  content: String,
+  name: { type: String, required: true },
+  phone: { type: String, required: true },
+  prefer_time: { type: String, required: false },
+  content: { type: String, required: true },
 });
 
-interface CounselDocument extends mongoose.Document {}
-
 let Counsel: any = null;
+
 if (mongoose.models.Counsel !== undefined) {
   Counsel = mongoose.models.Counsel;
 } else {
-  Counsel = mongoose.model<CounselDocument>("Counsel", counselSchema);
+  Counsel = mongoose.model("Counsel", counselSchema);
 }
 
 export default Counsel;
