@@ -12,7 +12,7 @@ const Page = () => {
         </h1>
       </div>
 
-      <div className="w-full h-[480px] container flex flex-col py-4 px-2 border-sky-900">
+      <div className="w-full h-[640px] container flex flex-col py-4 px-2 border-sky-900">
         <KakaoMap />
       </div>
 
