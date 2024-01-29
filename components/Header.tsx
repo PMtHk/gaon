@@ -1,3 +1,4 @@
+import AdminDashboard from "./AdminDashboard.button";
 import RightSideMenu from "./RightSideMenu";
 
 const Header = () => {
@@ -66,6 +67,8 @@ const Header = () => {
               공지사항
             </a>
           </div>
+
+          <AdminDashboard />
         </nav>
         <RightSideMenu />
       </div>

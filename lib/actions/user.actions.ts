@@ -8,7 +8,12 @@ import { connectToDB, disconnectFromDB } from "../mongoose/mongoose";
 import { generateAccess, generateRefresh, verifyAccess } from "../jwt/jwt";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
-export const createAdmin = async (username: string, name:string, password: string, phone:string) => {
+export const createAdmin = async (
+  username: string,
+  name: string,
+  password: string,
+  phone: string
+) => {
   let result: any = null;
   try {
     await connectToDB();
@@ -23,7 +28,6 @@ export const createAdmin = async (username: string, name:string, password: strin
     result = {
       ok: true,
       message: "새 관리자가 생성되었습니다.",
-      createdAdmin,
     };
   } catch (error: any) {
     result = {
@@ -180,7 +184,7 @@ export const getAuth = async () => {
 
     return {
       ok: true,
-      _id
+      _id,
     };
   } catch (error: any) {
     return {
