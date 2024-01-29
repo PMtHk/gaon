@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { CounselFormValidation } from "@/lib/validations/counsel.validation";
 
 import {
   Form,
@@ -27,13 +25,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "../ui/textarea";
-import { createCounsel } from "@/lib/actions/counsel.actions";
+import { CreateAdminValidation } from "@/lib/validations/user.validation";
+import { createAdmin } from "@/lib/actions/user.actions";
 
-interface CounselFormProps {
-  handleSheetClose: () => void;
+interface CreateAdminProps {
+  handleClose: () => void;
 }
 
-const CounselForm = ({ handleSheetClose }: CounselFormProps) => {
+const CreateAdmin = ({ handleClose }: CreateAdminProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [alert, setAlert] = useState<{
     isOpen: boolean;
@@ -48,31 +47,32 @@ const CounselForm = ({ handleSheetClose }: CounselFormProps) => {
   });
 
   const form = useForm({
-    resolver: zodResolver(CounselFormValidation),
+    resolver: zodResolver(CreateAdminValidation),
     defaultValues: {
       name: "",
+      username: "",
+      password: "",
+      passwordConfirm: "",
       phone: "",
-      prefer_time: "",
-      content: "",
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof CounselFormValidation>) => {
+  const onSubmit = async (data: z.infer<typeof CreateAdminValidation>) => {
     setIsLoading(true);
 
-    const res = await createCounsel(
+    const res = await createAdmin(
       data.name,
-      data.phone,
-      data.prefer_time,
-      data.content
+      data.username,
+      data.password,
+      data.phone
     );
 
     if (!res.ok) {
       setIsLoading(false);
       setAlert({
         isOpen: true,
-        title: "상담 신청 실패",
-        message: "잠시 후 다시 시도해주세요.",
+        title: "관리자 계정 추가 실패",
+        message: res.error,
         onClick: () => {
           setAlert({
             isOpen: false,
@@ -88,10 +88,10 @@ const CounselForm = ({ handleSheetClose }: CounselFormProps) => {
 
     setAlert({
       isOpen: true,
-      title: "상담 신청 완료",
-      message: "감사합니다. 저희가 빠른 시일 내에 연락드리겠습니다.",
+      title: "관리자 계정 추가 성공",
+      message: "새로운 관리자 계정이 추가되었습니다.",
       onClick: () => {
-        handleSheetClose();
+        handleClose();
       },
     });
     setIsLoading(false);
@@ -107,15 +107,76 @@ const CounselForm = ({ handleSheetClose }: CounselFormProps) => {
           <div>
             <FormField
               control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>아이디</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="tesxt"
+                      placeholder="gaonCenter"
+                      required
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div>
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>비밀번호</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder="**********"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div>
+            <FormField
+              control={form.control}
+              name="passwordConfirm"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>비밀번호 확인</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder="**********"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div>
+            <FormField
+              control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>이름</FormLabel>
+                  <FormLabel>직책/표시될 이름 </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       type="text"
-                      placeholder="이가온"
+                      placeholder="관리자, 센터장, ..."
                       required
                     />
                   </FormControl>
@@ -135,7 +196,7 @@ const CounselForm = ({ handleSheetClose }: CounselFormProps) => {
                   <FormControl>
                     <Input
                       {...field}
-                      type="tel"
+                      type="text"
                       placeholder="010-1234-5678"
                       required
                     />
@@ -146,48 +207,8 @@ const CounselForm = ({ handleSheetClose }: CounselFormProps) => {
             />
           </div>
 
-          <div>
-            <FormField
-              control={form.control}
-              name="prefer_time"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>상담 가능 시간</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      type="text"
-                      placeholder="예) 평일 10:00 ~ 12:00"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          <div>
-            <FormField
-              control={form.control}
-              name="content"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>상담 내용</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      {...field}
-                      placeholder="원하시는 상담 내용을 입력해주세요."
-                      required
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
           <Button type="submit" className="w-full" disabled={isLoading}>
-            상담 신청하기
+            관리자 추가하기
           </Button>
         </form>
       </Form>
@@ -207,4 +228,4 @@ const CounselForm = ({ handleSheetClose }: CounselFormProps) => {
   );
 };
 
-export default CounselForm;
+export default CreateAdmin;

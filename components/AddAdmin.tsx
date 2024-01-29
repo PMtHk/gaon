@@ -1,19 +1,22 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
+import CreateAdmin from "./forms/CreateAdmin.form";
+import { useState } from "react";
 
 const AddAdmin = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <button className="p-4 w-full h-full rounded-2xl flex flex-col justify-center items-center bg-gradient-to-br from-[#469CE8] to-[#1335E6] lg:text-lg font-semibold text-white hover:-translate-y-0.5 hover:drop-shadow-xl transform transition-all">
           <svg
@@ -44,23 +47,8 @@ const AddAdmin = () => {
           <DialogTitle>관리자 계정 추가</DialogTitle>
           <DialogDescription>새로운 관리자를 추가합니다.</DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              아이디
-            </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              비밀번호
-            </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
+
+        <CreateAdmin handleClose={() => setIsOpen(false)} />
       </DialogContent>
     </Dialog>
   );
