@@ -54,12 +54,12 @@ export const getNoticeList = async (search: string = "", page: number = 1) => {
       .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(limit)
-      .populate("author", "username")
+      .populate("author", "name")
       .lean();
 
     noticeList.forEach((notice: any) => {
       notice._id = notice._id.toString();
-      notice.author = notice.author.username;
+      notice.author = notice.author.name;
       notice.createdAt = notice.createdAt
         .toLocaleDateString("ko-KR", {
           year: "numeric",
@@ -97,9 +97,9 @@ export const getNotice = async (_id: string) => {
     await connectToDB();
 
     const notice = await Notice.findById(_id)
-      .populate("author", "username")
+      .populate("author", "name")
       .lean();
-    notice.author = notice.author.username;
+    notice.author = notice.author.name;
     notice.createdAt = notice.createdAt
       .toLocaleDateString("ko-KR", {
         year: "numeric",

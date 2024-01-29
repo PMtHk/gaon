@@ -8,13 +8,14 @@ import { connectToDB, disconnectFromDB } from "../mongoose/mongoose";
 import { generateAccess, generateRefresh, verifyAccess } from "../jwt/jwt";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
-export const createAdmin = async (username: string, password: string) => {
+export const createAdmin = async (username: string, name:string, password: string) => {
   let result: any = null;
   try {
     await connectToDB();
 
     const createdAdmin = await User.create({
       username,
+      name,
       password,
     });
 

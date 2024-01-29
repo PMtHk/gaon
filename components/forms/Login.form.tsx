@@ -104,7 +104,7 @@ const LoginForm = () => {
       setAccessToken(res.accessToken);
 
       setIsLoading(false);
-      router.push("/");
+      router.push("/admin");
     } catch (error: any) {
       setIsLoading(false);
       setAlert({

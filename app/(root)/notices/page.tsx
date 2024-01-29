@@ -18,8 +18,9 @@ const Page = async ({
 
   const response = await getNoticeList(search, page);
 
+  
   const { noticeList, currentPage, totalPages } = response;
-
+  
   return (
     <div className="w-full flex flex-col items-center">
       <div className="pt-20 pb-10">
