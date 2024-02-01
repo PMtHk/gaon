@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import Counsel from "../models/counsel.model";
 import { connectToDB } from "../mongoose/mongoose";
 
@@ -36,6 +37,7 @@ export const createCounsel = async (
     };
   }
 
+  revalidatePath("/admin/counsels")
   return result;
 };
 
