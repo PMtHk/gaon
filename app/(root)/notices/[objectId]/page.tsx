@@ -92,7 +92,7 @@ const NoticeViewPage = async ({
         <NoticeActions noticeId={objectId} />
         <a
           href="/notices"
-          className="h-12  rounded-lg text-sky-900 border border-sky-900  flex items-center justify-center px-2 hover:bg-sky-100"
+          className="h-12  rounded-lg border border-sky-900  flex items-center justify-center px-2 hover:bg-sky-100"
         >
           목록으로
         </a>

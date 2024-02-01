@@ -68,7 +68,7 @@ const Page = async ({
       <div className="container w-full flex justify-end items-end pt-2 px-1">
         <a href="/admin/new-notice" className="border border-sky-900 p-1 px-2 md:p-2 md:px-4 rounded-lg hover:bg-sky-900 hover:text-white duration-150">글쓰기</a>
       </div>
-      <div className="mt-4">
+      <div className="my-4">
         <NoticePagination currentPage={currentPage} totalPages={totalPages} />
       </div>
     </div>

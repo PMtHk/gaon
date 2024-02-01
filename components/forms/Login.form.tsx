@@ -7,8 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { LoginFormValidation } from "@/lib/validations/user.validation";
 
-import useUserStroe from "@/store/useUserStore";
-
 import {
   Form,
   FormControl,
@@ -32,9 +30,6 @@ import { login } from "@/lib/actions/user.actions";
 
 const LoginForm = () => {
   const router = useRouter();
-
-  const setIsLogin = useUserStroe((state) => state.setIsLogin);
-  const setAccessToken = useUserStroe((state) => state.setAccessToken);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [alert, setAlert] = useState<{
@@ -99,9 +94,6 @@ const LoginForm = () => {
 
         return;
       }
-
-      setIsLogin(true);
-      setAccessToken(res.accessToken);
 
       setIsLoading(false);
       router.push("/admin");

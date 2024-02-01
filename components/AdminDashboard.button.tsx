@@ -3,19 +3,27 @@
 import { deleteNotice } from "@/lib/actions/notice.actions";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
-import useUserStore from "@/store/useUserStore";
 import { useEffect, useState } from "react";
+import { getAuth } from "@/lib/actions/user.actions";
 
 const AdminDashboard = () => {
   const router = useRouter();
-  const isLogin = useUserStore((state) => state.isLogin);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
-    if (isLogin) {
+    const auth = async () => {
+      const { ok } = await getAuth();
+
+      if (!ok) {
+        setIsLoggedIn(false);
+        return;
+      }
+
       setIsLoggedIn(true);
-    }
-  }, [isLogin]);
+    };
+
+    auth();
+  }, []);
 
   const onClick = () => {
     router.push("/admin");
@@ -24,7 +32,11 @@ const AdminDashboard = () => {
   return (
     <div className="flex gap-1 ml-2">
       {isLoggedIn && (
-        <button className="hover:scale-110 transition-all" onClick={onClick} disabled={!isLoggedIn}>
+        <button
+          className="hover:scale-110 transition-all"
+          onClick={onClick}
+          disabled={!isLoggedIn}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="#394150"
