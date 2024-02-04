@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import LoginForm from "@/components/forms/Login.form";
+
+export const metadata: Metadata = {
+  title: "관리자 로그인 | 가온방문요양센터",
+  description: "가온방문요양센터 관리자 로그인 페이지입니다.",
+};
 
 const Page = async () => {
   return (

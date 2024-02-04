@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "제도소개 | 가온방문요양센터",
+  description: "노인장기요양보험제도 소개입니다.",
+};
+
 const Page = () => {
   return (
     <div className="container w-full min-h-[100vh-64px] md:min-h-[100vh-80px]">

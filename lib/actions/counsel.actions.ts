@@ -43,7 +43,7 @@ export const createCounsel = async (
           },
           {
             type: "mrkdwn",
-            text: `*전화번호:*\n"${counsel.phone}"`,
+            text: `*전화번호:*\n${counsel.phone}`,
           },
           {
             type: "mrkdwn",

@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "방문요양 | 가온방문요양센터",
+  description: "방문요양서비스에 대한 안내입니다.",
+};
+
 const Page = () => {
   return (
     <div className="container w-full min-h-[100vh-64px] md:min-h-[100vh-80px]">

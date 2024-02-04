@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import KakaoMap from "@/components/kakaoMap/KakaoMap";
+
+export const metadata: Metadata = {
+  title: "찾아오시는 길 | 가온방문요양센터",
+  description: "가온방문요양센터 찾아오시는 길입니다.",
+};
 
 const Page = () => {
   return (

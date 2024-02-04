@@ -8,13 +8,20 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "가온방문요양센터",
-  description: "가온 방문요양센터, 인천 서구",
+  description: "가온 방문요양센터를 찾아주셔서 감사합니다.",
   keywords: [
     "인천 방문요양",
     "서구 방문요양",
     "가온 방문요양",
     "가온 방문요양센터",
   ],
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: "",
+    title: "가온방문요양센터",
+    description: "가온 방문요양센터를 찾아주셔서 감사합니다.",
+  },
 };
 
 export default function RootLayout({

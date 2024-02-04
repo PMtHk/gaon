@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
+
 import { getNoticeList } from "@/lib/actions/notice.actions";
 import NoticeRow from "./NoticeRow";
 import Search from "./Search";
 import NoticePagination from "./NoticePagination";
+
+export const metadata: Metadata = {
+  title: "공지사항 | 가온방문요양센터",
+  description: "가온방문요양센터 공지사항입니다.",
+};
 
 const Page = async ({
   searchParams,
@@ -18,9 +25,8 @@ const Page = async ({
 
   const response = await getNoticeList(search, page);
 
-  
   const { noticeList, currentPage, totalPages } = response;
-  
+
   return (
     <div className="w-full flex flex-col items-center">
       <div className="pt-20 pb-10">
@@ -66,7 +72,12 @@ const Page = async ({
         </div>
       </div>
       <div className="container w-full flex justify-end items-end pt-2 px-1">
-        <a href="/admin/new-notice" className="border border-sky-900 p-1 px-2 md:p-2 md:px-4 rounded-lg hover:bg-sky-900 hover:text-white duration-150">글쓰기</a>
+        <a
+          href="/admin/new-notice"
+          className="border border-sky-900 p-1 px-2 md:p-2 md:px-4 rounded-lg hover:bg-sky-900 hover:text-white duration-150"
+        >
+          글쓰기
+        </a>
       </div>
       <div className="my-4">
         <NoticePagination currentPage={currentPage} totalPages={totalPages} />
