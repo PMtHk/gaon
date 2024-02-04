@@ -30,8 +30,8 @@ export const createCounsel = async (
         type: "section",
         text: {
           type: "mrkdwn",
-          text: "새로운 상담 신청이 등록되었습니다.\n",
-          // *<https://main.ddvcbq580qs3j.amplifyapp.com/admin/counsels|가온방문요양센터>*
+          text: "새로운 상담 신청이 등록되었습니다.\n*<https://main.ddvcbq580qs3j.amplifyapp.com/admin/counsels|가온방문요양센터>*",
+          
         },
       },
       {
@@ -39,7 +39,7 @@ export const createCounsel = async (
         fields: [
           {
             type: "mrkdwn",
-            text: `*성함:*\n"${counsel.name}"`,
+            text: `*성함:*\n${counsel.name}`,
           },
           {
             type: "mrkdwn",

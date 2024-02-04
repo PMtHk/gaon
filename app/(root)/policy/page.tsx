@@ -28,13 +28,14 @@ const Page = () => {
             장기요양인정 및 이용절차
           </h2>
           <div className="w-full grid gap-x-8 gap-y-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:text-lg">
-            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4 hover:bg-sky-200 transition-colors duration-500">
+            <div className="w-full border rounded-xl p-6 flex md:flex-col justify-between items-center gap-4 hover:bg-sky-100 transition-colors duration-500">
               <svg
                 width="64px"
                 height="64px"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="hidden md:block"
               >
                 <path
                   d="M16 7V6.2C16 5.0799 16 4.51984 15.782 4.09202C15.5903 3.71569 15.2843 3.40973 14.908 3.21799C14.4802 3 13.9201 3 12.8 3H11.2C10.0799 3 9.51984 3 9.09202 3.21799C8.71569 3.40973 8.40973 3.71569 8.21799 4.09202C8 4.51984 8 5.0799 8 6.2V7M9 15V12M15 15V12M3.02721 10.0263C3.38776 10.3719 7.28572 14 12 14C16.7143 14 20.6122 10.3719 20.9728 10.0263M3.02721 10.0263C3 10.493 3 11.0665 3 11.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V11.8C21 11.0665 21 10.493 20.9728 10.0263M3.02721 10.0263C3.06233 9.4241 3.14276 8.99959 3.32698 8.63803C3.6146 8.07354 4.07354 7.6146 4.63803 7.32698C5.27976 7 6.11984 7 7.8 7H16.2C17.8802 7 18.7202 7 19.362 7.32698C19.9265 7.6146 20.3854 8.07354 20.673 8.63803C20.8572 8.99959 20.9377 9.4241 20.9728 10.0263"
@@ -48,13 +49,14 @@ const Page = () => {
               <span className="break-keep">장기요양인정신청 및 방문조사</span>
             </div>
 
-            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4 hover:bg-sky-200 transition-colors duration-500">
+            <div className="w-full border rounded-xl p-6 flex md:flex-col justify-between items-center gap-4 hover:bg-sky-100 transition-colors duration-500">
               <svg
                 width="64px"
                 height="64px"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="hidden md:block"
               >
                 <path
                   fillRule="evenodd"
@@ -69,13 +71,14 @@ const Page = () => {
               </span>
             </div>
 
-            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4 hover:bg-sky-200 transition-colors duration-500">
+            <div className="w-full border rounded-xl p-6 flex md:flex-col justify-between items-center gap-4 hover:bg-sky-100 transition-colors duration-500">
               <svg
                 width="64px"
                 height="64px"
                 viewBox="-0.5 0 25 25"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="hidden md:block"
               >
                 <path
                   d="M9.00977 21.39H19.0098C20.0706 21.39 21.0881 20.9685 21.8382 20.2184C22.5883 19.4682 23.0098 18.4509 23.0098 17.39V7.39001C23.0098 6.32915 22.5883 5.31167 21.8382 4.56152C21.0881 3.81138 20.0706 3.39001 19.0098 3.39001H7.00977C5.9489 3.39001 4.93148 3.81138 4.18134 4.56152C3.43119 5.31167 3.00977 6.32915 3.00977 7.39001V12.39"
@@ -112,13 +115,14 @@ const Page = () => {
               </span>
             </div>
 
-            <div className="w-full border rounded-xl p-6 flex flex-col items-center gap-4 hover:bg-sky-200 transition-colors duration-500">
+            <div className="w-full border rounded-xl p-6 flex md:flex-col justify-between items-center gap-4 hover:bg-sky-100 transition-colors duration-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="64px"
                 height="64px"
                 viewBox="0 0 1024 1024"
                 version="1.1"
+                className="hidden md:block"
               >
                 <path
                   d="M182.52 146.2h585.14v256h73.15V73.06H109.38v877.71h256v-73.14H182.52z"
@@ -476,7 +480,7 @@ const MobileProcedure = () => {
 
 const Criteria = () => {
   return (
-    <table className="w-[80%] text-lg">
+    <table className="w-[100%] text-lg">
       <tbody>
         <tr className="bg-sky-100">
           <th className="w-[15%] p-4 border-r border-b border-sky-300">등급</th>
