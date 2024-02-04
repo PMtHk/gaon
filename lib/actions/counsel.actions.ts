@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import Counsel from "../models/counsel.model";
 import { connectToDB } from "../mongoose/mongoose";
+import { sendMessage } from "./slack.actions";
 
 export const createCounsel = async (
   name: string,
@@ -24,6 +25,40 @@ export const createCounsel = async (
 
     // TODO: Send SMS to admins
 
+    const blocks = [
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: "새로운 상담 신청이 등록되었습니다.\n",
+          // *<https://main.ddvcbq580qs3j.amplifyapp.com/admin/counsels|가온방문요양센터>*
+        },
+      },
+      {
+        type: "section",
+        fields: [
+          {
+            type: "mrkdwn",
+            text: `*성함:*\n"${counsel.name}"`,
+          },
+          {
+            type: "mrkdwn",
+            text: `*전화번호:*\n"${counsel.phone}"`,
+          },
+          {
+            type: "mrkdwn",
+            text: `*상담 선호 시간:*\n"${counsel.prefer_time}"`,
+          },
+          {
+            type: "mrkdwn",
+            text: `*상담 내용:*\n"${counsel.content}"`,
+          },
+        ],
+      },
+    ];
+
+    await sendMessage(blocks);
+
     result = {
       ok: true,
       message: "상담이 신청되었습니다.",
@@ -37,7 +72,7 @@ export const createCounsel = async (
     };
   }
 
-  revalidatePath("/admin/counsels")
+  revalidatePath("/admin/counsels");
   return result;
 };
 
@@ -56,7 +91,7 @@ export const getCounselList = async () => {
   try {
     await connectToDB();
 
-    const counselList = await Counsel.find({}).lean() as Counsel[];
+    const counselList = (await Counsel.find({}).lean()) as Counsel[];
 
     result = {
       ok: true,
