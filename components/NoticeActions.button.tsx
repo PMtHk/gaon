@@ -27,6 +27,7 @@ const NoticeActions = ({ noticeId }: { noticeId: string }) => {
 
       if (!ok) {
         setIsLoggedIn(false);
+        return;
       }
 
       setIsLoggedIn(true);
