@@ -1,21 +1,28 @@
+"use client";
+
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "./ui/separator";
+import { useState } from "react";
 
 const RightSideMenu = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <Sheet>
+    <Sheet onOpenChange={setIsMenuOpen} open={isMenuOpen}>
       <SheetTrigger asChild className="md:hidden">
         <Button variant="ghost" className="text-base">
           <svg
@@ -39,40 +46,63 @@ const RightSideMenu = () => {
       <SheetContent className="w-screen md:hidden">
         <SheetHeader>
           <SheetTitle>
-            <a
+            <Link
               href="/"
               aria-label="가온방문요양센터 홈으로 이동"
               className="text-2xl font-semibold lg:font-bold text-sky-900"
+              onClick={handleLinkClick}
             >
               <span className="text-pink-500 mr-1">가온</span>
               방문요양센터
-            </a>
+            </Link>
           </SheetTitle>
           <SheetDescription className="text-base">
             가온에 방문해주셔서 감사합니다.
           </SheetDescription>
         </SheetHeader>
         <nav className="flex flex-col justify-center items-center mt-6 text-xl font-semibold gap-4">
-          <a href="/greetings" className="text-2xl font-bold mt-2 text-sky-900">
+          <Link
+            href="/greetings"
+            className="text-2xl font-bold mt-2 text-sky-900"
+            onClick={handleLinkClick}
+          >
             센터소개
-          </a>
+          </Link>
           <Separator className="mt-1" />
 
-          <a href="/greetings">인사말</a>
-          <a href="/directions">오시는 길</a>
+          <Link href="/greetings" onClick={handleLinkClick}>
+            인사말
+          </Link>
+          <Link href="/directions" onClick={handleLinkClick}>
+            오시는 길
+          </Link>
 
-          <a href="/policy" className="text-2xl font-bold mt-6 text-sky-900">
+          <Link
+            href="/policy"
+            className="text-2xl font-bold mt-6 text-sky-900"
+            onClick={handleLinkClick}
+          >
             노인장기요양보험
-          </a>
+          </Link>
           <Separator className="mt-1" />
-          <a href="/policy">노인장기요양보험이란?</a>
-          <a href="/visiting-care">방문요양 서비스 소개</a>
+          <Link href="/policy" onClick={handleLinkClick}>
+            노인장기요양보험이란?
+          </Link>
+          <Link href="/visiting-care" onClick={handleLinkClick}>
+            방문요양 서비스 소개
+          </Link>
 
-          <a href="/notices" className="text-2xl font-bold mt-6 text-sky-900">
+          <Link
+            href="/notices"
+            className="text-2xl font-bold mt-6 text-sky-900"
+            onClick={handleLinkClick}
+          >
             공지사항
-          </a>
+          </Link>
           <Separator className="mt-1" />
-          <a href="/notices">공지사항</a>
+          <Link href="/notices" onClick={handleLinkClick}>
+            공지사항
+          </Link>
         </nav>
       </SheetContent>
     </Sheet>
