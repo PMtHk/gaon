@@ -1,3 +1,5 @@
+import { formatPhoneNumber} from "@toss/utils"
+
 import {
   Table,
   TableBody,
@@ -8,6 +10,8 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+
+
 import { getCounselList } from "@/lib/actions/counsel.actions";
 import { ActionBtn } from "./ActionBtn";
 import { Counsel } from "./page";
@@ -43,7 +47,7 @@ export const PendingCounselList = async () => {
               {counsel.name}
             </TableCell>
             <TableCell className="text-left break-all">
-              {counsel.phone}
+              {formatPhoneNumber(counsel.phone)}
             </TableCell>
             <TableCell className="text-left break-all">
               {counsel.prefer_time}

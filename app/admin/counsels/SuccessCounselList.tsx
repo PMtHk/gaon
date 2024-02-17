@@ -5,10 +5,11 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
+  TableRow,
 } from "@/components/ui/table";
 import { getCounselList } from "@/lib/actions/counsel.actions";
 import { Counsel } from "./page";
+import { formatPhoneNumber } from "@toss/utils";
 
 export const SuccessCounselList = async () => {
   const response = await getCounselList("success");
@@ -41,7 +42,7 @@ export const SuccessCounselList = async () => {
               {counsel.name}
             </TableCell>
             <TableCell className="text-left break-all">
-              {counsel.phone}
+              {formatPhoneNumber(counsel.phone)}
             </TableCell>
             <TableCell className="text-left break-all">
               {counsel.prefer_time}
