@@ -31,7 +31,6 @@ export const createCounsel = async (
         text: {
           type: "mrkdwn",
           text: "새로운 상담 신청이 등록되었습니다.\n*<https://main.ddvcbq580qs3j.amplifyapp.com/admin/counsels|가온방문요양센터>*",
-          
         },
       },
       {
@@ -85,13 +84,15 @@ type Counsel = {
   content: string;
 };
 
-export const getCounselList = async () => {
+export const getCounselList = async (status: string) => {
   let result: any = null;
 
   try {
     await connectToDB();
 
-    const counselList = (await Counsel.find({}).lean()) as Counsel[];
+    const counselList = (await Counsel.find({
+      status,
+    }).lean()) as Counsel[];
 
     result = {
       ok: true,
@@ -105,5 +106,35 @@ export const getCounselList = async () => {
     };
   }
 
+  return result;
+};
+
+export const updateCounselStatus = async (
+  counselId: string,
+  NewStatus: string
+) => {
+  let result: any = null;
+
+  try {
+    await connectToDB();
+
+    await Counsel.findByIdAndUpdate({
+      _id: counselId,
+    }).updateOne({
+      status: NewStatus,
+    });
+
+    result = {
+      ok: true,
+    };
+  } catch (error: any) {
+    result = {
+      ok: false,
+      message: "상담 상태를 변경하는데 실패했습니다.",
+      error: error.message,
+    };
+  }
+
+  revalidatePath("/admin/counsels");
   return result;
 };
