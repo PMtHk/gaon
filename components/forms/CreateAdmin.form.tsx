@@ -61,8 +61,8 @@ const CreateAdmin = ({ handleClose }: CreateAdminProps) => {
     setIsLoading(true);
 
     const res = await createAdmin(
-      data.name,
       data.username,
+      data.name,
       data.password,
       data.phone
     );
