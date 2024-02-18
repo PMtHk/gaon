@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     title: "가온방문요양센터",
     description: "가온 방문요양센터를 찾아주셔서 감사합니다.",
   },
+  verification: {
+    other: {
+      "naver-site-verification": "80123b89ea8f80e92402e1d677f19007df7bae0b",
+    },
+  },
 };
 
 export default function RootLayout({
