@@ -2,37 +2,36 @@ import Image from "next/image";
 import CallInfo from "../../components/CallInfo";
 import Notice from "../../components/Notice";
 import VisitingCare from "../../components/services/VisitingCare";
-import VisitinbBathe from "../../components/services/VisitinbBathe";
+import VisitingBathe from "../../components/services/VisitingBathe";
 import Ranking from "../../components/services/Ranking";
 import CareTool from "../../components/services/CareTool";
+
+import homeIntro from "../assets/home_intro.png";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col">
-        <div className="w-full h-[60vh]  bg-home-intro bg-[65%_center] md:bg-[60%_center] lg:bg-[55%_center] bg-cover bg-no-repeat transition-all duration-500">
-          <div className="opacity-0 lg:opacity-100 container flex flex-col p-1 px-2 justify-start items-start mt-16">
-            <span className="text-4xl font-bold text-slate-50">
+        <div className=" relative w-full h-[70vh] transition-all duration-500">
+          <div className="container h-full flex flex-col p-1 px-2 items-center md:items-start justify-end md:justify-start pb-24 md:pb-0 md:mt-16 text-black md:text-slate-50 ">
+            <span className="text-3xl md:text-4xl font-bold">
               가족 같은 마음으로
             </span>
-            <span className="text-4xl font-bold first-line: text-slate-50">
+            <span className="text-3xl md:text-4xl font-bold">
               어르신을 정성껏 모시겠습니다.
             </span>
-            <span className="mt-4 text-2xl font-bold text-slate-50">
+            <span className="mt-4 text-lg md:text-2xl font-bold">
               가온 방문요양센터를 찾아주셔서 감사합니다.
             </span>
           </div>
-        </div>
-        <div className="w-full h-[20vh] md:h-[15vh] lg:h-0 lg:opacity-0 flex flex-col items-center justify-center">
-          <span className="text-2xl font-bold text-slate-950">
-            가족 같은 마음으로
-          </span>
-          <span className="text-2xl font-bold text-slate-950">
-            어르신을 정성껏 모시겠습니다.
-          </span>
-          <span className="mt-4 text-xl font-semibold text-slate-950">
-            가온 방문요양센터를 찾아주셔서 감사합니다.
-          </span>
+
+          <Image
+            src={homeIntro}
+            alt="메인페이지 배경이미지"
+            fill
+            objectFit="cover"
+            className="z-[-1] object-[65%_center] md:object-[60%_center] lg:object-[55%_center]"
+          />
         </div>
       </div>
 
@@ -58,7 +57,7 @@ export default function Home() {
           <div className="p-2 grid md:grid-cols-2 gap-6">
             <VisitingCare />
             <Ranking />
-            <VisitinbBathe />
+            <VisitingBathe />
             <CareTool />
           </div>
         </div>
