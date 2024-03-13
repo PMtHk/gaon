@@ -7,7 +7,7 @@ const Notice = async () => {
   const { noticeList } = response;
 
   return (
-    <div className="min-h-80 h-full w-full border-2 rounded-2xl flex flex-col items-center p-6">
+    <div className="min-h-80 h-full w-full border-2 rounded-2xl flex flex-col items-center p-6 md:col-span-2 lg:col-span-1">
       <div className="w-full flex justify-between items-center">
         <span className="text-2xl font-bold text-slate-900">공지사항</span>
         <a
@@ -18,7 +18,7 @@ const Notice = async () => {
         </a>
       </div>
 
-      <Separator className="mt-2 h-0.5"/>
+      <Separator className="mt-2 h-0.5" />
 
       <div className="w-full flex flex-col mt-4 gap-0.5">
         {noticeList &&
@@ -31,7 +31,7 @@ const Notice = async () => {
               <span className="text-lg text-slate-900">{notice.title}</span>
               <span className="hidden md:block text-sm text-slate-600 ml-2">
                 {notice.createdAt}
-                </span>
+              </span>
             </a>
           ))}
       </div>

@@ -32,7 +32,6 @@ export default function Home() {
             placeholder="blur"
             objectFit="cover"
             loading="eager"
-            sizes="1000px"
             className="z-[-1] object-[65%_center] md:object-[60%_center] lg:object-[55%_center]"
           />
         </div>
@@ -44,7 +43,7 @@ export default function Home() {
             가온 공지사항
           </p>
         </div>
-        <div className="p-2 grid xl:grid-cols-2 gap-4">
+        <div className="p-2 grid md:grid-cols-3 lg:grid-cols-2 gap-4">
           <Notice />
           <CallInfo />
         </div>

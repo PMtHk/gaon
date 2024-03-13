@@ -10,6 +10,7 @@ const VisitingBathe = async () => {
         alt="방문목욕"
         layout="fixed"
         width={310}
+        height={288}
         className="w-1/2 rounded-l-2xl overflow-hidden object-cover"
       />
 

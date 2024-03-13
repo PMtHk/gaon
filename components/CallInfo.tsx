@@ -9,10 +9,10 @@ const CallInfo = async () => {
         href="tel:032-566-6645"
         className="w-full h-full flex flex-col items-center justify-center"
       >
-        <span className="text-slate-50 text-3xl font-semibold">
+        <span className="text-slate-50 text-2xl font-semibold">
           무료상담 / 등급신청
         </span>
-        <span className="mt-4 text-slate-50 text-4xl font-semibold">
+        <span className="mt-4 text-slate-50 text-3xl font-semibold">
           032-566-6645
         </span>
       </a>
@@ -21,7 +21,7 @@ const CallInfo = async () => {
         src={callInfo}
         alt="상담문의 032-566-6645"
         fill
-        sizes="600px"
+        sizes="400px"
         objectFit="cover"
         className="z-[-10]"
       />
