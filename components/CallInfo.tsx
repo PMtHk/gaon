@@ -21,6 +21,7 @@ const CallInfo = async () => {
         src={callInfo}
         alt="상담문의 032-566-6645"
         fill
+        sizes="600px"
         objectFit="cover"
         className="z-[-10]"
       />

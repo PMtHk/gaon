@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col">
-        <div className=" relative w-full h-[70vh] transition-all duration-500">
+        <div className=" relative w-screen h-[70vh] transition-all duration-500">
           <div className="container h-full flex flex-col p-1 px-2 items-center md:items-start justify-end md:justify-start pb-24 md:pb-0 md:mt-16 text-black md:text-slate-50 ">
             <span className="text-3xl md:text-4xl font-bold">
               가족 같은 마음으로
@@ -29,7 +29,10 @@ export default function Home() {
             src={homeIntro}
             alt="메인페이지 배경이미지"
             fill
+            placeholder="blur"
             objectFit="cover"
+            loading="eager"
+            sizes="1000px"
             className="z-[-1] object-[65%_center] md:object-[60%_center] lg:object-[55%_center]"
           />
         </div>

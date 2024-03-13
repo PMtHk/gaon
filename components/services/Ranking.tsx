@@ -1,20 +1,18 @@
-
 import Image from "next/image";
 
 import careRating from "../../app/assets/care-rating.png";
 
-
 const Ranking = async () => {
   return (
     <div className="min-h-72 h-full w-full bg-slate-50 rounded-2xl flex">
-      <div className="relative w-1/2 h-full rounded-l-2xl overflow-hidden" >
-        <Image
-          src={careRating}
-          alt="등급신청"
-          fill
-          objectFit="cover"
-        />
-      </div>
+      <Image
+        src={careRating}
+        alt="등급신청"
+        layout="fixed"
+        width={310}
+        className="w-1/2 rounded-l-2xl overflow-hidden object-cover"
+      />
+
       <div className="w-1/2 h-full flex flex-col p-2 items-center justify-center">
         <span className="font-semibold text-3xl text-slate-700">등급신청</span>
         <p className="mt-8 p-2 text-xl font-semibold text-slate-500 break-keep">
