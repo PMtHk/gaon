@@ -9,6 +9,7 @@ const VisitingBathe = async () => {
         src={bathService}
         alt="방문목욕"
         layout="fixed"
+        placeholder="blur"
         width={310}
         height={288}
         className="w-1/2 rounded-l-2xl overflow-hidden object-cover"

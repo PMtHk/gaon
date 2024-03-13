@@ -9,6 +9,7 @@ const VisitingCare = async () => {
         src={visitCare}
         alt="방문요양"
         layout="fixed"
+        placeholder="blur"
         width={310}
         height={288}
         className="w-1/2 rounded-l-2xl overflow-hidden object-cover"

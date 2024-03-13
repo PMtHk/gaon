@@ -9,6 +9,7 @@ const CareTool = async () => {
         src={careTool}
         alt="복지용구"
         layout="fixed"
+        placeholder="blur"
         width={310}
         height={288}
         className="w-1/2 rounded-l-2xl overflow-hidden object-cover"
