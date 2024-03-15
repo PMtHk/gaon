@@ -8,7 +8,6 @@ const VisitingBathe = async () => {
        <Image
         src={bathService}
         alt="방문목욕"
-        layout="fixed"
         placeholder="blur"
         width={310}
         height={288}

@@ -30,9 +30,8 @@ export default function Home() {
             alt="메인페이지 배경이미지"
             fill
             placeholder="blur"
-            objectFit="cover"
             loading="eager"
-            className="z-[-1] object-[65%_center] md:object-[60%_center] lg:object-[55%_center]"
+            className="z-[-1] object-[65%_center] md:object-[60%_center] lg:object-[55%_center] object-cover"
           />
         </div>
       </div>

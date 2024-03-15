@@ -8,7 +8,6 @@ const CareTool = async () => {
       <Image
         src={careTool}
         alt="복지용구"
-        layout="fixed"
         placeholder="blur"
         width={310}
         height={288}

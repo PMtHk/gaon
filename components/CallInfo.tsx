@@ -22,9 +22,7 @@ const CallInfo = async () => {
         alt="상담문의 032-566-6645"
         fill
         placeholder="blur"
-        sizes="400px"
-        objectFit="cover"
-        className="z-[-10]"
+        className="z-[-10] object-cover"
       />
     </div>
   );

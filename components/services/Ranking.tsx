@@ -8,7 +8,6 @@ const Ranking = async () => {
       <Image
         src={careRating}
         alt="등급신청"
-        layout="fixed"
         placeholder="blur"
         width={310}
         height={288}
