@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# gaoncare-homepage
 
-## Getting Started
+가온방문요양센터 홈페이지 개발
 
-First, run the development server:
+<br/>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 서비스
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**1. 방문요양 제도 및 서비스 소개**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**2. 공지사항 등록 및 수정**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**3. 상담 신청 및 완료 처리**
 
-## Learn More
+**4. 상담 신청 시 관리자에게 SENS로 문자 발송**
 
-To learn more about Next.js, take a look at the following resources:
+- 개발 당시, 네이버의 SENS의 새 앱 등록이 막혀 Slack API를 활용하여 알림 발송으로 대체
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br/>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 프로젝트 목표
 
-## Deploy on Vercel
+**1. Next.js 연습 및 실제 서비스 배포까지 구현**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Next.js 14 를 이용한 구현
+- AWS Amplify 를 이용한 배포
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**2. 검색엔진 최적화(SEO)**
+
+- sitemap.xml, robots.txt 작성
+- static 및 dynamic metadata 작성
+
+**3. 주 사용층, 사용기기에 맞게 성능 최적화**
+
+
+
+- <a href="https://velog.io/@pmthk__/NextImage-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%B5%9C%EC%A0%81%ED%99%94%ED%95%98%EA%B8%B0">
+  Next/Image 컴포넌트를 적용한 이미지 최적화
+  </a>
+
+<br/>
+
+## 사용 기술 스택
+
+- Next.js 14
+- MongoDB
+- AWS Amplify (배포)
